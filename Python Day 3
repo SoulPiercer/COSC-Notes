@@ -136,7 +136,7 @@ for i in romanNumerals:
 
 ---Return Values---
 for i in romanNumerals:
-  print(romanNumerals[i])
+  	print(romanNumerals[i])
 
 ****Testing to see how many of each character are in the string using Dictionaries****
 
@@ -149,10 +149,22 @@ for i in my Str:
         myDict[i] = 1
 
 
+VARIABLE LENGTH ARGUMENT:
+def myFunction(*args):
+	product = 1
+	for i in args:
+		product = product * i
+	return product
+print(myFunction(5,10,50,100))
 
+map function 
+does the function on left to every item iterable on the right
 
-
-
+		map(function, list)
+		myList = [2, 3, 4, 5]
+		print(list(map(lamda x:x**2, myList)))
+all()
+determines if entire list is true
 
 
 
