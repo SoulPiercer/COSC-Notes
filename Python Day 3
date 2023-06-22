@@ -71,3 +71,94 @@ Pe1/part 2
  37 
  38 if __name__ == '__main__':
  39     pass
+
+
+--FILE IO--
+'r' read (default)
+'w' write
+
+Opening and Closing a file:
+  with statement 
+  
+with open('myfile.txt', 'r') as fp:
+  fp.read()
+  fp.readline()
+  fp.readlines()
+
+with open('test.txt', 'w') as fp:
+    fp.write('First line\n')
+    lines = ['Second line\n', 'Third line\n', 'Fourth line\n', 'Last line\n']
+    fp.writelines(lines)
+
+  
+with open("test.txt") as source, open("copy.txt", 'w') as destination:
+    destination.write(source.read())
+
+
+SETS:
+Cant pull items out of a set
+only check if it is present.
+s = {1,2,3,4,5}
+s.add(100)
+s.add(0)
+s.add(99)
+print(s)
+{0, 1, 2, 3, 4, 5, 100, 99}
+1 in s
+True
+50 in s
+False
+
+DICTIONARIES:
+key: value pairs
+
+romanNumerals = {'I':1, 'V':5, 'X':10, 'L':50}
+
+romanNumerals['X']
+10
+
+Adding to a dictionary
+romanNumerals['C'] = 100
+romanNumerals['D'] = 500
+romanNumerals['M'] = 1000
+
+romanNumerals['C']
+100
+
+deleting from a dictionary
+del romanNumerals['C']
+'C' in romanNumerals
+'M' in romanNumerals
+
+---Returns keys---
+for i in romanNumerals:
+  print(i)
+
+---Return Values---
+for i in romanNumerals:
+  print(romanNumerals[i])
+
+****Testing to see how many of each character are in the string using Dictionaries****
+
+myStr = "According to all known laws of aviation, the bee should not be able to fly"
+myDict = {}
+for i in my Str:
+    if i in myDict:
+        myDict[i] += 1
+    else:
+        myDict[i] = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
