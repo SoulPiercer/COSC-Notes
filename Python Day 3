@@ -166,9 +166,21 @@ does the function on left to every item iterable on the right
 all()
 determines if entire list is true
 
+/////////////////////////////////////////////////////////////////////////////////////
 
+Challenge: Using the file school_prompt.txt, if the character ‘p’ is in a word, then add the word to a list called p_words.
 
+with open('school_prompt.txt', 'r') as fb:
+    p_words = []
 
+    words = fb.read().split()
+    for word in words:
+        if 'p' in word:
+            p_words.append(word)
+        else: 
+            continue
+            
+# p_words = [i for i in fb.read().split() if 'p' in i]
 
 
 
