@@ -183,6 +183,8 @@
 
  ### Question 10
         def q10(numlist):
+
+            # return all(map(lambda x: x > 0, numlist))
             '''
             TLO: 112-SCRPY003, LSA 1
             TLO: 112-SCRPY004, LSA 1
