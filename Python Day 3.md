@@ -1,12 +1,12 @@
 
-Ascii -> Decimal -> Binary
+#Ascii -> Decimal -> Binary
 
   Ordinal number:
   ord() -- gives decimal equivalant of any single character string --
 
-    >>> NukeCodes = 'a'
-    >>> ord(NukeCodes)
-        97
+		NukeCodes = 'a'
+		ord(NukeCodes)
+		97
 
 
   Binary Conversion:
