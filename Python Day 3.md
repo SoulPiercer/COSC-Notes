@@ -1,5 +1,5 @@
 
-#Ascii -> Decimal -> Binary
+# Ascii -> Decimal -> Binary
 
   Ordinal number:
   ord() -- gives decimal equivalant of any single character string --
