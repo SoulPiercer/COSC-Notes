@@ -1,8 +1,8 @@
 
 # Ascii -> Decimal -> Binary
 
-  Ordinal number:
-  ord() -- gives decimal equivalant of any single character string --
+  ## Ordinal number:
+  ### ord() -- gives decimal equivalant of any single character string --
 
 		NukeCodes = 'a'
 		ord(NukeCodes)
@@ -11,84 +11,84 @@
 
   # Binary Conversion:
 
-  - Converts Decimal to binary - 
+## Converts Decimal to binary - 
 		bin(ord(NukeCodes))
         	'0b1100001'
 
        *** Prefered Method***
 
-  - Format Binary and pads leading zero in conversion
-    >>> format(ord(NukeCodes), '0>8b')
-        '01100001'
+## Format Binary and pads leading zero in conversion
+		format(ord(NukeCodes), '0>8b')
+		'01100001'
 
-Binary -> Decimal -> Ascii
+## Binary -> Decimal -> Ascii
 
-    Convert Binary -> Decimal 
-      int('01100001', 2)
+### Convert Binary -> Decimal 
+   		int('01100001', 2)
 
-    Decimal -> Single Character String
-      chr(97)
-
-
-Pe1/part 2
-
- 1 #!/usr/bin/env python3
-  2 
-  3 def steg_encode_char(char, cover):
-  4     '''LSB encodes a character
-  5     Args:
-  6         char (str): a single character string
-  7         cover (list): list of 8 strings representing integers in the range [0-255]
-  8     Returns:
-  9         None
- 10     '''
- 11     binChar = format(ord(char), '0>8b')
- 12     binCharList = list(binChar)
- 13 
- 14     for i in range(0,8):
- 15         coverbin = format(int(cover[i]),'0>8b')
- 16         coverbinList = list(coverbin)
- 17         coverbinList[-1] =  binCharList[i]
- 18         newCover = ''.join(coverbinList)
- 19         cover[i] = str(int(newCover, 2))
- 20 
- 21     
- 22     pass
- 23 
- 24 def steg_decode_char(stego):
- 25     '''LSB decodes a character
- 26     Args:
- 27         stego (list): list of 8 strings representing integers in the range [0-255]
- 28     Returns:
- 29         str: character that was decoded
- 30     '''
- 31     characterL = []
- 32     for i in range(0,8):
- 33         stegoList = list(format(int(stego[i]), '0>8b'))
- 34         characterL.append(stegoList[-1])
- 35     character = chr(int(''.join(characterL),2))
- 36     return character
- 37 
- 38 if __name__ == '__main__':
- 39     pass
+### Decimal -> Single Character String
+		chr(97)
 
 
---FILE IO--
-'r' read (default)
-'w' write
+## Pe1/part 2
 
-Opening and Closing a file:
-  with statement 
+		  #!/usr/bin/env python3
+		   
+		  def steg_encode_char(char, cover):
+		       '''LSB encodes a character
+		       Args:
+		           char (str): a single character string
+		           cover (list): list of 8 strings representing integers in the range [0-255]
+		       Returns:
+		           None
+		      '''
+		      binChar = format(ord(char), '0>8b')
+		      binCharList = list(binChar)
+		  
+		      for i in range(0,8):
+		          coverbin = format(int(cover[i]),'0>8b')
+		          coverbinList = list(coverbin)
+		          coverbinList[-1] =  binCharList[i]
+		          newCover = ''.join(coverbinList)
+		          cover[i] = str(int(newCover, 2))
+		  
+		      
+		pass
+		  
+		  def steg_decode_char(stego):
+		      '''LSB decodes a character
+		      Args:
+		          stego (list): list of 8 strings representing integers in the range [0-255]
+		      Returns:
+		          str: character that was decoded
+		      '''
+		      characterL = []
+		      for i in range(0,8):
+		          stegoList = list(format(int(stego[i]), '0>8b'))
+		          characterL.append(stegoList[-1])
+		      character = chr(int(''.join(characterL),2))
+		      return character
+		  
+		  if __name__ == '__main__':
+		      pass
+
+
+# --FILE IO--
+## 'r' read (default)
+## 'w' write
+
+## Opening and Closing a file:
+  ## with statement 
   
-with open('myfile.txt', 'r') as fp:
-  fp.read()
-  fp.readline()
-  fp.readlines()
+		with open('myfile.txt', 'r') as fp:
+			fp.read()
+		  	fp.readline()
+		  	fp.readlines()
 
-with open('test.txt', 'w') as fp:
-    fp.write('First line\n')
-    lines = ['Second line\n', 'Third line\n', 'Fourth line\n', 'Last line\n']
-    fp.writelines(lines)
+		with open('test.txt', 'w') as fp:
+		    fp.write('First line\n')
+		    lines = ['Second line\n', 'Third line\n', 'Fourth line\n', 'Last line\n']
+		    fp.writelines(lines)
 
   
 with open("test.txt") as source, open("copy.txt", 'w') as destination:
