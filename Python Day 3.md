@@ -9,11 +9,11 @@
 		97
 
 
-  Binary Conversion:
+  # Binary Conversion:
 
   - Converts Decimal to binary - 
-    >>> bin(ord(NukeCodes))
-        '0b1100001'
+		bin(ord(NukeCodes))
+        	'0b1100001'
 
        *** Prefered Method***
 
