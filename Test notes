@@ -1,0 +1,23 @@
+## Format
+
+    first = 'rocky'
+    middle = 'zh'
+    last = 'wilson'
+    domain = 'nsa'
+    # return last five of last name in list splice
+    f'{first[0]}{middle[0]}{last[0:5]}@{domain}.gov'
+
+    # or
+    '{}{}{}@{}.gov'.format(first[0],middle[0],last[0:5],domain)
+
+    myEmal = 'nicholas.e.riesmeyer@usmc.mil
+    splitted = myEmail.split('@')
+    joined = '.'.join(splitted)
+    final = joined.split('.')
+
+    #GEt all but last value
+
+    final[:-1]
+    with open('myfile.txt') as fp0:
+      with open('newfile.txt', 'w') as fp1:
+        fp1.write(fp0.read())
