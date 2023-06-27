@@ -238,6 +238,7 @@
             for i in lst1:
                 lst.append(i)
             return sorted(lst, reverse = True)
+            # return sorted(lst0 + lst1, reverse = True)
 
 ### Question 4
         def q4(s1,s2,s3):
@@ -246,7 +247,7 @@
             the average score is greater than 50. Otherwise return 'NOGO'.
             '''
         
-            if (s1+s2+s3/3) > 50:
+            if ((s1+s2+s3)/3) > 50:
                 return "GO"
             else:
                 return "NOGO"
@@ -326,8 +327,8 @@
             '''
             number = []
             for i in strng:
-                if i >= '0' and i <= '9':
-                    number += i
+                if i.isnumeric():
+                    number.append(i)
             integer = (''.join(number))
             return chr(int(integer))
      
