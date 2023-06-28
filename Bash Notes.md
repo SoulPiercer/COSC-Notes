@@ -102,13 +102,23 @@ Ctrl + l clears screen
 # Scripting:
 #!/bin/bash
 if [[c condition }}; then
-# do these commands
+    # do these commands
 elif [[ condition]]; then
     # do these
 else
     #then run these
-fi        
+fi      
 
+  1 #!/bin/bash
+  2 
+  3 if [[ -f /etc/passwd ]]; then
+  4     echo "/etc/passwd file exists"
+  5 elif [[ ! -f /etc/passwd ]]; then
+  6     echo "/etc/passwd ile doesnt exists"
+  7 else
+  8     echo "something went wrong :("
+  9 fi  
+~                              
 
 
 
