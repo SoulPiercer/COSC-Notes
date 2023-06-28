@@ -1,6 +1,9 @@
 # Bash Notes
+
 ## https://cted.cybbh.io/tech-college/pns/public/pns/latest/guides/bash_sg.html
-## Wednesday 7/5/2023
+
+## Test on Wednesday 7/5/2023
+
 ## Day 1
 *** Get slack login*** 
 Not object oriented
