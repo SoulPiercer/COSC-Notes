@@ -1,4 +1,5 @@
 # Bash Notes
+## https://cted.cybbh.io/tech-college/pns/public/pns/latest/guides/bash_sg.html
 ## Wednesday 7/5/2023
 ## Day 1
 *** Get slack login*** 
@@ -15,27 +16,76 @@ Ctrl + r runs search through history
 Ctrl + l clears screen
 
 # Linux Commands
-## touch
-    creates file
-### options
+### touch
+        creates file
+#### options
     -t ; changes timestamp
 
 ## curl ; client url request
     access a webpage in shell
 ### curl cht.sh/(command)
     cheat sheet for commands
-## mkdir
-## rm ; remove a file
+### mkdir
+### rm ; remove a file
     rm -r remove files recursively
-## rmdir; delete a directory
-## ls ; list files
+### rmdir; delete a directory
+### ls ; list files
     ls -l ; list permissions
-## echo ; returns to screen
-## cat
-## head
-## Tail
-## more / tail
-
-# Variables
+### echo ; returns to screen
+### cat
+### head
+### Tail
+### more / tail
+### locate
+     searches database for linux native commands ie: # locate find
+### wheris
+    searches for binary files, executables, and config files AND man
+    page page directories [ /usr/share/man/* ];
+    $whereis man ; $manpath
+    does not search user directories: /home /* OR various other locations easily
+    searched by `find' AND `locate' ie: #
+### find
+    -type ; specifies type of file
+    -exec ; executes a command on whats found
+        find /var/log/ -iname *.log -exec ls -al {} 2>/dev/null \;
+            curly brackets are used to reverence results of find 
+            \; finishes line
+### grep 
+    looks for patterns
+    grep [pattern][file]
+    grep -v invers match
+### egrep ; extended grep
+    cat /etc/passwd | egrep "root|student" 
+        finds root or sutdent in /etc/passwd
+### ps
+    ps -elf 
+    -- forest ; shows parent processes
+### kill  / killall
+    kill -9 {pid}
+    killall ; kills all of a proccess
+### awk
+awk -F: '{print $1}'         displays 1st field delimited by a ":"
+awk '{print $2}'             displays 2nd field, delimited automatically by space
+awk '{print $0}'             displays all string data that matches
+    
+## Variables
     $ references variables
+## Redirectors
+    > redirect st out 
+    >> appned
+    2> ; errors
+        2> /dev/null
+
+
+## brace expansion {}
+    touch file{a,b,c}.txt ; crreates 3 files
+    touch file{1..10}.txt ; creates 10 different files
+    rm file{a,b,c}
+    
+
+
+
+
+
+
         
