@@ -83,6 +83,12 @@ Ctrl + l clears screen
     run sort before uniq 
     cat sort.txt | sort | uniq -c | sort -nr   : counts instances of each item sorted in reverse based on number of cocurences
 
+### sed 
+	sed 's/regexp/replacement/'
+ 	sed '/\/bin\/bash/d' /etc/passwd # careful editing this file. ; deletes
+	sed -i -e 's/ANCHOVIES/SAUSAGE/g' pizaster.htm
+             # replaces every instance of "ANCHOVIES" with "SAUSAGE" on pizaster.htm
+
     
 ## Variables
     $ references variables
@@ -121,7 +127,7 @@ fi
   7 else
   8     echo "something went wrong :("
   9 fi  
-~                              
+                              
 
 
 
