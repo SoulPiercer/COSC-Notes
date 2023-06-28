@@ -1,0 +1,8 @@
+
+
+
+find '/var' -empty -printf "%i %f\n"
+
+
+print file name with inode # 999
+find -inum 999 -printf '%f\n'
