@@ -55,6 +55,8 @@ Ctrl + l clears screen
         find /var/log/ -iname *.log -exec ls -al {} 2>/dev/null \;
             curly brackets are used to reverence results of find 
             \; finishes line
+    -name ; searches rom pwd recursively fo files
+	-path		searches in designated path
 ### grep 
     looks for patterns
     grep [pattern][file]
