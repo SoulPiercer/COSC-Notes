@@ -99,7 +99,22 @@ Ctrl + l clears screen
  	sed '/\/bin\/bash/d' /etc/passwd # careful editing this file. ; deletes
 	sed -i -e 's/ANCHOVIES/SAUSAGE/g' pizaster.htm
              # replaces every instance of "ANCHOVIES" with "SAUSAGE" on pizaster.htm
+	swapping text in file
+ 	-e adds expression
+  	can use regex
+   	/d deletes line with pattern
+    	-i permenantly changes file
+     	have to escape characters i delimeter is in patterhn
 
+      
+    	Using ONLY sed, write all lines from $HOME/passwd into $HOME/PASS/passwd.txt that do not end 	with either /bin/sh or /bin/false.
+
+	TIP: When designating a path in a sed command, you must escape the path characters if they 	are to be interpreted as part of the string
+
+	sed '/\/bin/d' file.txt
+
+      	ex: sed -e '/\/bin\/sh/d' -e '/\/bin\/false/d' ~/passwd > ~/PASS/passwd.txt
+       
     
 ## Variables
     $ references variables
