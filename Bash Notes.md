@@ -4,6 +4,8 @@
 
 ## Test on Wednesday 7/5/2023
 
+## 
+
 ## Day 1
 *** Get slack login*** 
 Not object oriented
@@ -66,6 +68,13 @@ Ctrl + l clears screen
 ### kill  / killall
     kill -9 {pid}
     killall ; kills all of a proccess
+### cut
+	cut -d: -f1         displays only portion of line before 1st instance of delimiter ``:''
+	cut -d: -f1-        " and any following strings up to the very next instance ``:''
+	cut -d: -f1- -s     " " but don’t print any lines not containing delimiter ``:''
+	cut -f3             displays only the 3rd field delimited by space
+	cut -f2-4           displays only fields 2 through 4 delimited by space
+	cut -c3-10          displays only the 3rd through 10th characters of each line
 ### awk
     awk -F: '{print $1}'         displays 1st field delimited by a ":"
     awk '{print $2}'             displays 2nd field, delimited automatically by space
