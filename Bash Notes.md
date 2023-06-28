@@ -37,8 +37,8 @@ Ctrl + l clears screen
 ### echo ; returns to screen
 ### cat
 ### head
-### Tail
-### more / tail
+### tail
+### more / less
 ### locate
      searches database for linux native commands ie: # locate find
 ### wheris
