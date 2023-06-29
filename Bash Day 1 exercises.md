@@ -47,14 +47,32 @@ While this activity can be accomplished with only find, it can also be combined 
 
   
 ## Q 2 
-  Copy all files in $HOME/1123 directory that end in .txt and omit andy files containing "~" character, to directory $HOME/CUT
+Activity:
+Copy all files in $HOME/1123 directory that end in .txt and omit andy files containing "~" character, to directory $HOME/CUT
     
     find ~/1123 -name "*.txt" ! -iname '*~*' -exec cp {} ~/CUT/ \;
 
-## Q3
+## Q 3
+  Activity:
 
-# Q 5
-  
+Using ONLY the find command, find all empty files/directories in directory /var and print out ONLY the filename (not absolute path), and the inode number, separated by newlines.
+Example Output
+
+123 file1
+456 file2
+789 file3
+
+    find '/var' -empty -printf "%i %f\n"
+
+## Q 4
+Activity:
+
+Using ONLY the find command, find all files on the system with inode 4026532575 and print only the filename to the screen, not the absolute path to the file, separating each filename with a newline. Ensure unneeded output is not visible.
+
+    find -inum 4026532575 -printf"%f\n"    
+
+## Q 5
+  Activity:
   Using only the ls -l and cut Commands, write a BASH script that shows all filenames with extensions ie: 1.txt, etc., but no directories, in $HOME/CUT.
   Write those to a text file called names in $HOME/CUT directory.
   Omit the names filename from your output.
