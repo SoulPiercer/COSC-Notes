@@ -53,18 +53,19 @@ Copy all files in $HOME/1123 directory that end in .txt and omit andy files cont
     
     find ~/1123 -name "*.txt" ! -iname '*~*' -exec cp {} ~/CUT/ \;
   *** {} is a place holder for input from find ***
-## Q 3
+## Q 3 : find -empty - printf
   Activity:
 
 Using ONLY the find command, find all empty files/directories in directory /var and print out ONLY the filename (not absolute path), and the inode number, separated by newlines.
-Example Output
-
+Example Output:
+inode filename
+%i   %f
 123 file1
 456 file2
 789 file3
 
     find '/var' -empty -printf "%i %f\n"
-
+  *** %i grabs inode number | | %f grages filename ***
 ## Q 4
 Activity:
 
