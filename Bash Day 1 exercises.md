@@ -1,6 +1,7 @@
 # Bash Activities
 ## Q 1 Brace-Expansion
-  Activity: Using Brace-Expansion, create the following directories within the $HOME directory:
+  Activity: 
+  Using Brace-Expansion, create the following directories within the $HOME directory:
 
   1123
   1134
@@ -16,20 +17,35 @@ Use Brace-Expansion to create the following files within the $HOME/1123 director
 
 Files to create:
 
-    1.txt
-    2.txt
-    3.txt
-    4.txt
-    5.txt
-    6~.txt
-    7~.txt
-    8~.txt
-    9~.txt
+  1.txt
+  2.txt
+  3.txt
+  4.txt
+  5.txt
+  6~.txt
+  7~.txt
+  8~.txt
+  9~.txt
 
     touch ~/1123/{1..5}.txt & touch ~/1123/{6..9}~.txt
 
 ## Q 1.3
-  Activity: Using the find command, list all files in $HOME/1123 that end in .txt.
+  Activity: 
+  Using the find command, list all files in $HOME/1123 that end in .txt.
+
+    find ~/1123 -name *.txt
+
+## Q 1.3 Challenge
+
+Challenge Activity:
+
+List all files in $HOME/1123 that end in .txt. Omit the files containing a tilde (~) character.
+
+While this activity can be accomplished with only find, it can also be combined with grep as well.
+
+    find ~/1123 -name "*.txt" | grep -v "~.txt"
+
+  
 ## Q 2 
   Copy all files in $HOME/1123 directory that end in .txt and omit andy files containing "~" character, to directory $HOME/CUT
     
