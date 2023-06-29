@@ -1,4 +1,5 @@
 # Bash Activities
+# Day 1
 ## Q 1 Brace-Expansion
   Activity: 
   Using Brace-Expansion, create the following directories within the $HOME directory:
@@ -79,7 +80,7 @@ Using ONLY the find command, find all files on the system with inode 4026532575 
 
     ls -l ~/CUT | cut -d':' -f2 | cut -d' ' -f2 | cut -d'.' -f1- -s > ~/CUT/names
 
-# Q 6
+## Q 6
 Activity:
 
 Write a basic bash script that greps ONLY the IP addresses in the text file provided (named StoryHiddenIPs in the current directory); sort them uniquely by number of times they appear.
@@ -110,7 +111,7 @@ find '/var' -empty -printf "%i %f\n"
 
     dmesg | egrep "CPU|BIOS" | egrep -i -v "usable|reserved" |cut -d] -f2-
     
-# Q 9 
+## Q 9 
   Activity:
 
   Write a Bash script using "Command Substitution" to replace all passwords, using openssl, from the file $HOME/PASS/shadow.txt with the MD5 encrypted password: Password1234, with salt: bad4u
@@ -129,7 +130,7 @@ find '/var' -empty -printf "%i %f\n"
   Using ONLY sed, write all lines from $HOME/passwd into $HOME/PASS/passwd.txt that do not end with either /bin/sh or /bin/false.
 
     sed -e '/\/bin\/sh/d' -e '/\/bin\/false/d' ~/passwd > ~/PASS/passwd.txt
-
+# Day 2
 ## Q 11
   Activity:
 
