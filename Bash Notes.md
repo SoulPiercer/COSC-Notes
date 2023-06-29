@@ -154,8 +154,65 @@ fi
   7 else
   8     echo "something went wrong :("
   9 fi  
-                              
+# Day 2
+
+## Special Parameters
+	
+	$* ; The positional parameters, starting from one.
+	
+	$@ ; The positional parameters, starting from one.
+		
+	$# ; The number of positional parameters.
+	
+	$? ; The exit status of the previous command.
+	
+	$- ; The current option flags of the shell.
+		
+	$$ ; The process ID of the shell.
+		
+	$! ; The process ID of the most recent background job.
+		
+	$0 ; is set to the name of the script.
+	
+	$_ ; First command in a script, is the path/name of the script as invoked.
+		Otherwise, it is the last parameter passed to the most recent command.
+		
+	
+## Functions 
+	function MyFunction { 
+ 		echo " this is MyFunction"
+   	}
+	myfunc() {
+ 		echo "myfunc"
+   	}
+
+     	function AFunc() {
+      		echo "Another Function"
+	}
+ 	MyFunction
+  	myfunc
+   	AFunc
+    
+	read variable ; takes input from a user and assigns it to a variable
+
+#!/bin/bash
+
+function getuserchoice() {
+	echo "Make a choice [1,2,3]"
+ 	readh userchoice
+  	case in $userchoice in 
+   		(fart) echo "fart" ;;
+		(poopr) echo "poop" ;;
+  	esac
+}
+getuserchoice
+
+ 1 #!/bin/bash
+  2 A=$1
+  3 echo The story  of Robert the $A
+  4 echo The $A was at the $A store.
+  5 
 
 
 
-        
+' ' takes things literal
