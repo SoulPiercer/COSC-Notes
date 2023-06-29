@@ -47,12 +47,12 @@ While this activity can be accomplished with only find, it can also be combined 
     find ~/1123 -name "*.txt" | grep -v "~.txt"
 
   
-## Q 2 
+## Q 2 ; find -exec 
 Activity:
 Copy all files in $HOME/1123 directory that end in .txt and omit andy files containing "~" character, to directory $HOME/CUT
     
     find ~/1123 -name "*.txt" ! -iname '*~*' -exec cp {} ~/CUT/ \;
-
+  # {} is a place holder for input from find
 ## Q 3
   Activity:
 
