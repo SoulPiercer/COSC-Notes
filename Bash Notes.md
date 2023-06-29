@@ -2,6 +2,7 @@
 
 ## https://cted.cybbh.io/tech-college/pns/public/pns/latest/guides/bash_sg.html
 
+## CTF IP from vpn: http://10.50.34.146/
 ## Test on Wednesday 7/5/2023
 
 ## 
