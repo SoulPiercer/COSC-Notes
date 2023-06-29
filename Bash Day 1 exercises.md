@@ -13,7 +13,11 @@
     
 find '/var' -empty -printf "%i %f\n"
 
+# Q 9 
 
+#!/bin/bash
+a=`openssl passwd -1 -salt bad4u Password1234`
+awk -F: -v "awk_var=$a" 'BEGIN {OFS=":"} {$2=awk_var} {print $0}' ~/PASS/shadow.txt
 print file name with inode # 999
 find -inum 999 -printf '%f\n' 2> /dev/null
 
