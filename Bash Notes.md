@@ -216,3 +216,33 @@ getuserchoice
 
 
 ' ' takes things literal
+
+# Day 3
+
+## Loops
+	
+		
+		#!/bin/bash
+		
+		T1() {
+		# Basic Counting Loop
+		for x in {0..10} ; do
+		  echo $x
+		done
+		}
+		
+		T2() {
+		# Counting while loop
+		x=0
+		while [[ $x -le '10' ]] ; do
+		   echo $x 
+		   x=$(($x+1))
+		   if [[ $x == 8 ]] ; then
+		       break
+		   fi
+		done
+		
+		}
+		
+		T1
+		T2
