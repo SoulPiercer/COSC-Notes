@@ -88,7 +88,7 @@ Write a basic bash script that greps ONLY the IP addresses in the text file prov
 
 It is not important to have a regular expression that only catches fully valid IP addresses. It is more important that you become familiar with creating and using regular expressions. Below, there are some useful websites that you can use to visually see what your regular expression pattern is matching on.
 
-    grep -E -o '^\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b$' StoryHiddenIPs | sort -n | -uniq -c 
+     egrep -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' StoryHiddenIPs | sort | uniq -c | sort -nr
 
     
     
@@ -102,7 +102,7 @@ find '/var' -empty -printf "%i %f\n"
   The input file is named $HOME/passwd and is located in the current directory.
   Output the results to a file called $HOME/SED/names.txt
 
-    awk -F: '($3 > 3)' ~/passwd | awk -F: '($NF == "/bin/bash") {print $1}' > ~/SED/names.txt
+    awk -F: '($3 > 3) && ($NF == "/bin/bash") {print $1}' ~/passwd  > ~/SED/names.txt
 
 ## Q 8
   Activity:
@@ -180,6 +180,9 @@ Using any BASH command complete the following:
     a=$(awk -F: '{OFS=":"} {print $4}' /etc/passwd | sort -n | head | tail -1)
     grep $a /etc/passwd | awk -F: '{OFS=":"} {print $6}' | md5sum | cut -d' ' -f1    
 
+    # Alternate solution: sort with delimeter of : and fourth column , numerically
+    #sort -t: -k4 -n /etc/passwd | head | tail -1 | cut -d: -f6 | md5sum | cut -d' ' -f1
+    # sort -t: -k4 -n passwd | awk -F: 'NR==10 {print $6}' | md5sum |  cut -d' ' -f1
 ## Q 15 
   
 
