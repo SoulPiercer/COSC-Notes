@@ -7,7 +7,7 @@
 
 ## 
 
-## Day 1
+# Day 1
 *** Get slack login*** 
 Not object oriented
     only data type is strings
