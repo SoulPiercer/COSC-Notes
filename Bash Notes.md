@@ -100,6 +100,8 @@ Ctrl + l clears screen
  	sed '/\/bin\/bash/d' /etc/passwd # careful editing this file. ; deletes
 	sed -i -e 's/ANCHOVIES/SAUSAGE/g' pizaster.htm
              # replaces every instance of "ANCHOVIES" with "SAUSAGE" on pizaster.htm
+			 # 's searches g' is for global
+	
 	swapping text in file
  	-e adds expression
   	can use regex
@@ -239,10 +241,36 @@ getuserchoice
 		   x=$(($x+1))
 		   if [[ $x == 8 ]] ; then
 		       break
-		   fi
-		done
+
+	   fi
+			done
+			
+			}
+			
+			T1
+			T2
+
+# Test Review
+
+	cat
+ 	echo 
+  	find 
+   		-exec 
+	 	-type
+	grep / egrep 
+ 		-o for only the pattern
+   	brace expansion
+	proccess 
+ 		ps
+   		kill -9 
+	 	pkill 
+   	cut command
+	awk pattern scanning and processing language
+ 		must declare awk variables.
+	sort | uniq -c 
+ 	if statements
+  		-eq 'numbers'vs == 'strings'
+
+
+ 		
 		
-		}
-		
-		T1
-		T2
