@@ -21,8 +21,10 @@ Create a script that will perform the following actions:
       sed -i -e 's/cat/dog/g' $infile
       sed -i -e 's/Navy/Army/g' $infile
       cp $infile $outfile
-    
+
+    # sed -e 's/cat/dog/g' -e 's/Navy/Army/g' $infile > $outfile
     }
+    
 
 ## Q2   basic awk
 
