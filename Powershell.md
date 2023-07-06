@@ -1,5 +1,6 @@
 # PowerShell Day 1
 ### xfreerdp /u:student /v:10.50.29.77 -dynamic-resolution +glyph-cache +clipboard
+https://cted.cybbh.io/tech-college/pns/public/pns/latest/powershell/pe_arrays_hash_tables.html
 
 Get-Command
 Get-Verb
