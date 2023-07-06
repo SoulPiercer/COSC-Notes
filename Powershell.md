@@ -1,2 +1,126 @@
 # PowerShell Day 1
 ### xfreerdp /u:student /v:10.50.29.77 -dynamic-resolution +glyph-cache +clipboard
+
+Get-Command
+Get-Verb
+
+get-command -verb get
+get-command -noun process
+
+tasklist
+Get-Process
+
+Get-EventLog -LogName Application
+Get-EventLog -LogName *
+
+
+Get-Alias
+
+update-help -Force -ErrorAction SilentlyContinue
+get-help *print*
+get-help Get-Process -Examples
+
+get-help about_*
+
+get-help Get-Process -online
+
+Get-childitem -path C:\Windows -Filter *.exe -recurse -name
+
+""" Aliases: """ 
+#Not persistent through system unless saved to profile.
+
+Get-Alias
+
+# Find all aliases for a given command
+Get-Alias -Definition Get-ChildItem
+
+#creates an alias, edit that runs notepad.exe
+set-alias edit notepad.exe
+
+#remove an alias
+remove-item alias:edit
+
+
+Get-Process | Get-Member -MemberType Method
+
+#Dot Notation
+(Get-Process).Name
+
+Get-process | Format-List -Property name, id
+#kill a process 
+ ( Get-Process notepad).Kill()
+
+
+ get-service | Format-Table Name, status
+
+ #find all options
+ Get-Service | Format-Table *
+
+ #Writing to the host
+ function fruit-host{
+ write-host "Banana"
+ write-host "Orange"
+ write-host "Pear"
+ write-host "Apple"
+ }
+ fruit-host | sort 
+ #Wont sort since it is written to host instead of output
+
+
+ #Writing to the output
+  function fruit-output{
+ write-output "Banana"
+ write-output "Orange"
+ write-output "Pear"
+ write-output "Apple"
+ }
+ fruit-output | sort 
+ #will sort since its in output
+
+
+ ## Variables
+ Must be called an declared with $
+ Get-Variable
+
+## Data Types
+
+ .GetType() returns BaseType
+    $x = Get-Process
+    
+    $a = "HELLO WORLD"
+    
+    ($x).GetType()
+    ($a).GetType()
+    
+    IsPublic IsSerial Name                                     BaseType                                                                                                                                                                                              
+    -------- -------- ----                                     --------                                                                                                                                                                                              
+    True     True     Object[]                                 System.Array                                                                                                                                                                                          
+    True     True     String                                   System.Object 
+
+    $a -is [array]
+    False
+    $a -is [string]
+    True
+
+## Arrays
+
+    $x[0..3]
+    
+    Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName                                                                                                                                                                                            
+    -------  ------    -----      -----     ------     --  -- -----------                                                                                                                                                                                            
+        526      20     1972       5668       4.66    460   0 csrss                                                                                                                                                                                                  
+        172      10     1708       5080       0.25    544   1 csrss                                                                                                                                                                                                  
+        376      15     1908       6112       8.45   1668   2 csrss                                                                                                                                                                                                  
+        417      16     3948      20408       1.66   4180   2 ctfmon 
+
+  Empty array : $array = @()
+  $multiarray = @((1,2,3,4),(5,6,7,8))
+ 
+ ## Pipelining
+ $_ or $PSItem     object in current pipeline
+
+$x, $y = 55, 45
+Compare-Object $x $y
+
+## Test-path variable:x
+  remove-variable x
