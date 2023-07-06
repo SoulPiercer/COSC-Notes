@@ -115,7 +115,18 @@ Get-process | Format-List -Property name, id
 
   Empty array : $array = @()
   $multiarray = @((1,2,3,4),(5,6,7,8))
- 
+
+ ### Hash Table
+    $mylist = @{First = "John"; Last = "Doe"; mid = "Bon"; Age = 35}
+    $mylist =[ordered] @{First = "John"; Last = "Doe"; mid = "Bon"; Age = 35}
+    $mylist.keys # Return all the keys
+    $mylist.values # Return all values
+    $mylist.last # Return specific value with key
+    $mylist["Last","Age","First"] # return value for each key listed
+    $mylist.date = Get-date # Adds new entry "date" = snapshot of date
+    $mylist["location"] = "Fort Gordon" # adds new key value pair or changes it
+    $mylist.Remove("location") # Removes location
+    
  ## Pipelining
  $_ or $PSItem     object in current pipeline
 
