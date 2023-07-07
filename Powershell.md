@@ -139,8 +139,8 @@ Compare-Object $x $y
 ## Test-path variable:x
   remove-variable x
 
-## Day 2 
-### Commands
+# Day 2 
+## Commands
 gci
 get-service
 formattable
@@ -153,36 +153,41 @@ where-object
 measure-object
 compare-object
 
-### Script Blocks
+## Script Blocks
 
 	# Script Block 
     $myblcok = {  get-service | ft name , status } 
 
-    # Call a sript block
+#Call a sript block
     & $myblock
 	$a = 1
 	$b = { 1+1 }
 	$a += &$b
 	$a 
 	
-	#Sorting and Grouping
+## Sorting and Grouping
 	
 	gci | sort 
 	gci | sort -Property length -Descending  | select Name , length -First 10
 	
-	# Find Objects methods and properties
-	gci | Get-Member
+#Find Objects methods and properties
 	
-	#Sorting and grouping combined
-	gci | sort extension | ft -GroupBy extension
+ 	gci | Get-Member
 	
-	# Grouping 
+#Sorting and grouping combined
+	
+ 	gci | sort extension | ft -GroupBy extension
+	
+#Grouping
+
 	get-service | Group-Object status 
-	#Pipeline Variable == $_  
-	# grabs whatever is passed through pipeline
+#Pipeline Variable == $_  
+	
+ 	#grabs whatever is passed through pipeline
 	gci | Group-Object {$_.length -lt 1KB}
 	
-	# Type casting
+#Type casting
+
 	1, 5, 3, 2, 4 | sort # Sorts as integers
 	'1', '5', '3', '2', '4' | sort # sorts as strings
 	'1', '5', '3', '2', '4' | sort -property {[Int]$_} #sort as integers
@@ -191,21 +196,21 @@ compare-object
 	1..10 | sort -Property { Get-Random }
 	1..10 | Get-Random
 	
-	#select-object Only objects in pipline are those specified
-	# Where-object will allow for more selection from entire pipeline. 
-	Get-Process | select -First 10
+#select-object Only objects in pipline are those specified
+#Where-object will allow for more selection from entire pipeline. 
 	
-	#Property values
-	#with headers
+ 	Get-Process | select -First 10
 	
+#Property values
+	
+ 	#with headers
 	Get-Process | select name, id
 	
 	#Without Headers
-	
 	Get-Process | select -Expandproperty name
 	
 	
-	# Filter results
+## Filter results
 	
 	Get-Service | Where-Object{$_.status -eq 'running'}
 	
@@ -213,53 +218,59 @@ compare-object
 	
 	Get-Process | where {$_.Company -like 'micro*'} | ft name , description, company
 	
-	#Additional Commands 
+## Additional Commands 
+
 	# sort | get-unique *** needs to be sorted first***
 	1,1,1,4,6,6,7,2,3,4,5,6,7 | sort | Get-Unique
 	
-	# measure-object
+##measure-object
+
 	gci | Measure-Object -Property length
 	(gci).count
 	gci| where{$_.mode -like 'd'} 
 	gci | Measure-Object -Property length -Average -Maximum -Minimum -sum
 	
-	#Compare Object
+#Compare Object
 	'test string' > test.txt
 	$before = gci
 	'42' > test.txt
 	$after = gci
 	Compare-Object $before $after -Property length, name
 
-# Object Creation
-$mytruck = new-object object 
-$mytruck | Get-Member
+## Object Creation
+	$mytruck = new-object object 
+	$mytruck | Get-Member
+ 
+### Add-Member
+#Adding properties using add-member
 
-# Adding properties using add-member
-Add-Member -MemberType NoteProperty -Name Color -Value Red -InputObject $mytruck
-Add-Member -me NoteProperty -in $mytruck -Na Make -value Ford
+	Add-Member -MemberType NoteProperty -Name Color -Value Red -InputObject $mytruck
+	Add-Member -me NoteProperty -in $mytruck -Na Make -value Ford
 
-# Short handed positional parameters
-# cmdlet     Parameter variable   MemberType   name   value
-Add-Member -InputObject $mytruck NoteProperty Model "F-150"
+#Short handed positional parameters
+	#cmdlet     Parameter variable   MemberType   name   value
+	Add-Member -InputObject $mytruck NoteProperty Model "F-150"
 
-# adding properties through a pipeline
-$mytruck | Add-Member NoteProperty Cab SuperCrew
+#adding properties through a pipeline
+	$mytruck | Add-Member NoteProperty Cab SuperCrew
 
 
-# Adding Methods
-Add-Member -MemberType ScriptMethod -InputObject $mytruck -name Drive -Value {"Going on a road trip"}
-$mytruck.drive()
+#### Adding Methods
+	Add-Member -MemberType ScriptMethod -InputObject $mytruck -name Drive -Value {"Going on a road trip"}
+	$mytruck.drive()
 
-## positional
-Add-Member -InputObject $mytruck ScriptMethod accelerate { "skinny pedal on the right" }
+##Positional
 
-## pipeline
-$mytruck | Add-Member ScriptMethod park { "finding a spot"}
+	Add-Member -InputObject $mytruck ScriptMethod accelerate { "skinny pedal on the right" }
 
-## [PScustomobject]
-$soldier = [PScustomobject]@{
-        "FirstName" = "Joe"
-        "LastName" = "Mama"
-        "Rank" = "Recruit"
-        "MOS" = "666"
+##Pipeline
+
+	$mytruck | Add-Member ScriptMethod park { "finding a spot"}
+
+#### [PScustomobject]
+	$soldier = [PScustomobject]@{
+        	"FirstName" = "Joe"
+        	"LastName" = "Mama"
+        	"Rank" = "Recruit"
+        	"MOS" = "666"
         }
