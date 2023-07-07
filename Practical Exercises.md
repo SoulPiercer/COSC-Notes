@@ -44,13 +44,32 @@
     Get-Alias gh
 
 ## Variables
+  1.) Create a variable that holds random number between 25-50
+  
     $var1 = Get-Random -Minimum 25 -Maximum 50
+  2.) Create a variable that holds a random number btwn 1-10
+  
     $var2 = Get-Random -Minimum 1 -Maximum 10
+  3.) Create a variable that holds the sum of two values
+  
     $sum = $var1 + $var2 
+  4.) Create a varialbe that holds the diference on two values
+  
     $sub = $var1 - $var2
+  5.) Create a variable that holds the product of two values
+  
     $prod = $var1 * $var2
+  6.) Create a variable that holds the quotient of two values
+  
     $quo = $var1 / $var2
-    '{0} + {1} = {2}' -f $var1, $var2, $sum
+  7 - 10.) Replace the variables in text with their values in the following format:
+
+  "var1" + "var2" = "sum"
+  "var1" - "var2" = "sub"
+  "var1" * "var2" = "prod"
+  "var1" / "var2" = "quo"
+
+    '{0} + {1} = {2}' -f $var1, $var2, $sum 
     '{0} - {1} = {2}' -f $var1, $var2, $sub
     '{0} * {1} = {2}' -f $var1, $var2, $prod
     '{0} / {1} = {2}' -f $var1, $var2, $quo
