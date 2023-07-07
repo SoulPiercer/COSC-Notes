@@ -1,31 +1,32 @@
 # PowerShell Day 1
 ### xfreerdp /u:student /v:10.50.29.77 -dynamic-resolution +glyph-cache +clipboard
 https://cted.cybbh.io/tech-college/pns/public/pns/latest/powershell/pe_arrays_hash_tables.html
-
-Get-Command
-Get-Verb
-
-get-command -verb get
-get-command -noun process
-
-tasklist
-Get-Process
-
-Get-EventLog -LogName Application
-Get-EventLog -LogName *
-
-
-Get-Alias
-
-update-help -Force -ErrorAction SilentlyContinue
-get-help *print*
-get-help Get-Process -Examples
-
-get-help about_*
-
-get-help Get-Process -online
-
-Get-childitem -path C:\Windows -Filter *.exe -recurse -name
+## Commands 
+	
+	Get-Command
+	Get-Verb
+	
+	get-command -verb get
+	get-command -noun process
+	
+	tasklist
+	Get-Process
+	
+	Get-EventLog -LogName Application
+	Get-EventLog -LogName *
+	
+	
+	Get-Alias
+	
+	update-help -Force -ErrorAction SilentlyContinue
+	get-help *print*
+	get-help Get-Process -Examples
+	
+	get-help about_*
+	
+	get-help Get-Process -online
+	
+	Get-childitem -path C:\Windows -Filter *.exe -recurse -name
 
 """ Aliases: """ 
 #Not persistent through system unless saved to profile.
@@ -284,8 +285,166 @@ compare-object
 	New-PSDrive -name HKU -PSProvider Registry -Root HKEY_USERS
 	
 
-
-## Conditional Statements
-### IF/Else 
+	"""Remove-PSDrive -Name HKU"""
+	Get-PSDrive HKU
+	cd HKU:
+	
+	
+	#Conditions
+	#equals / not equals
+	-eq / -ne 
+	#case insensitive 
+	-ieq 
+	#case sensitive 
+	-ceq
+	
+	
+	#Match 
+	-like # used with wildcards
+	-match # used with regex
+	
+	
+	# Replacement 
+	-replace # can use regex
+	
+	#containment
+	-contains / -notcontains
+	-in / -notin
+	
+	#type
+	-is / -isnot
+	
+	4 -eq 4
+	# returns true
+	
+	7, 8, 9 -eq 8
+	# returns 8
+	
+	
+	
+	
+	$num = 5
+	(($num -gt 1) -and ($num -lt 10))
+	
+	(($num -gt 1) -or ($num -lt 4))
+	
+	$x = 11
+	if ($x -gt 10) { "$x is larger than 10"}
+	
+	$x = 7
+	
+	if ($x -eq 5) {
+	    write-host "Condition is true $x is equal to 5" -ForegroundColor Blue
+	
+	}
+	else {
+	write-host " condition is false; $x is not equal to 5" -ForegroundColor DarkRed
+	}
+	
+	
+	#switch 
+	## Needed for exercises
+	## Most likely not on test
+	
+	$val = "meg"
+	Switch($val) {
+	Peter {"Thats the father"}
+	Lois {"Thats the mother"}
+	Stewie {"Thats the youngest child"}
+	Chris {"Thats the Oldest child"}
+	default { "Nobody cares about you $val"}
+	}
+	
+	
+	#Loops
+	
+	#ForEach-Object ### Executes code on each object sent through pipeline
+	
+	$nums = 1, 2, 3 ,4, 5
+	$nums | ForEach-Object{$_ * 2}
+	
+	$list = 'a', 'b', 'c'
+	$list | ForEach-Object{$_.toupper()}
+	
+	gci | ForEach-Object { $_.length / 1kb }
+	
+	
+	#ForEach, no pipeline
+	#needs to wait for gci results
+	foreach ($i in gci C:\ -Recurse) {$i.name}
+	#Results as it iterates through 
+	gci C:\ -Recurse | ForEach-Object{$_.name}
+	
+	foreach($num in 1..5){$num * 2}
+	
+	
+	$teams = "Lions", "Tigers", "Red Wings", "Pistons"
+	ForEach($team in $teams){
+	  $team.insert(0, "Detroit ")
+	}
+	
+	
+	#While
+	$num = 0
+	while ($num -lt 3) {
+	    $num
+	    $num ++
+	    }
+	
+	$var = ""
+	while($var -ne "Marines") {
+	    $var = read-host "Which branch of the military is the best?"
+	}
+	
+	#Do While 
+	## Will run at least once 
+	$num = 0
+	do {
+	    $num
+	    $num++
+	}while($num -lt 3)
+	
+	#Do Until
+	$num = 0
+	do {
+	    $num
+	    $num++
+	}until($num -gt 3)
+	
+	
+	#For Loops
+	for ($num =1; $num -le 3; $num++){$num}
+	
+	
+	for($i = 0; $i -le 255; $i++) {
+	    write-host 192.168.0.$i
+	}
+	
+	
+	
+	
+	#Reading and writing to a file
+	"Hello" > hello.txt
+	set-content -Path .\example.txt -Value "A string" # Overwrites file
+	Add-Content -Path .\example.txt -Value "another one" # Appends to a file
+	Get-Content .\example.txt # Reads file
+	cat .\example.txt 
+	
+	
+	#PowerShell Scripts
+	
+	'"Odoyle Rules!"' > 1-script.ps1
+	.\1-script.ps1
+	
+	
+	#Here-strings
+	
+	@'
+	"Odoyle rules!"
+	"More code"
+	gci
+	get-service
+	'@ > 2-script.ps1
+	.\2-script.ps1
 
  
