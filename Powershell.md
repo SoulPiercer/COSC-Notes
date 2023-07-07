@@ -140,7 +140,21 @@ Compare-Object $x $y
   remove-variable x
 
 ## Day 2 
+### Commands
+gci
+get-service
+formattable
+sort-object
+get-member
+select-object
+group-object
+get-random
+where-object
+measure-object
+compare-object
+
 ### Script Blocks
+
 	# Script Block 
     $myblcok = {  get-service | ft name , status } 
 
@@ -206,5 +220,46 @@ Compare-Object $x $y
 	# measure-object
 	gci | Measure-Object -Property length
 	(gci).count
+	gci| where{$_.mode -like 'd'} 
+	gci | Measure-Object -Property length -Average -Maximum -Minimum -sum
+	
+	#Compare Object
+	'test string' > test.txt
+	$before = gci
+	'42' > test.txt
+	$after = gci
+	Compare-Object $before $after -Property length, name
 
- 
+# Object Creation
+$mytruck = new-object object 
+$mytruck | Get-Member
+
+# Adding properties using add-member
+Add-Member -MemberType NoteProperty -Name Color -Value Red -InputObject $mytruck
+Add-Member -me NoteProperty -in $mytruck -Na Make -value Ford
+
+# Short handed positional parameters
+# cmdlet     Parameter variable   MemberType   name   value
+Add-Member -InputObject $mytruck NoteProperty Model "F-150"
+
+# adding properties through a pipeline
+$mytruck | Add-Member NoteProperty Cab SuperCrew
+
+
+# Adding Methods
+Add-Member -MemberType ScriptMethod -InputObject $mytruck -name Drive -Value {"Going on a road trip"}
+$mytruck.drive()
+
+## positional
+Add-Member -InputObject $mytruck ScriptMethod accelerate { "skinny pedal on the right" }
+
+## pipeline
+$mytruck | Add-Member ScriptMethod park { "finding a spot"}
+
+## [PScustomobject]
+$soldier = [PScustomobject]@{
+        "FirstName" = "Joe"
+        "LastName" = "Mama"
+        "Rank" = "Recruit"
+        "MOS" = "666"
+        }
