@@ -130,6 +130,7 @@ Get-process | Format-List -Property name, id
     
  ## Pipelining
  $_ or $PSItem     object in current pipeline
+   select-object 
 
 $x, $y = 55, 45
 Compare-Object $x $y
