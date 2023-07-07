@@ -44,8 +44,17 @@ $employee2= [ordered]@{"First" = "John"; "Last" = "Williams"; "ID" = 002; "Job" 
 $employee1.username = "M" + $employee1["Last"] + "001"
 $employee2.username = "JWilliams002"
 $employee1.Job = "Software Lead"
-$employee3 = @{[ordered]@{"First" = "Alex"; "Last" = "Moran"; "ID" = 003; "Job" = "Software Developer"}
-$employee3.Status = @{
+$employee3 = [ordered]@{"First" = "Alex"; "Last" = "Moran"; "ID" = 003; "Job" = "Software Developer"}
 
+$employee1["Status"] = "Management"
+$employee2["Status"] = "Intermediate"
+$employee3["Status"] = "EntryLevel"
 
 ## The Pipeline
+Get-Process | select name, StartTime -First 1 -Last 1
+
+Get-Date | select -Property Dayofweek
+get-help get-date
+get-date
+Get-HotFix | sort -Property InstalledOn | select InstalledOn , HotFixId
+Get-HotFix | sort -Property Description | select Description , InstalledOn , HotFixId
