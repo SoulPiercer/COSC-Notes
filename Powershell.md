@@ -131,9 +131,80 @@ Get-process | Format-List -Property name, id
  ## Pipelining
  $_ or $PSItem     object in current pipeline
    select-object 
+   
 
 $x, $y = 55, 45
 Compare-Object $x $y
 
 ## Test-path variable:x
   remove-variable x
+
+## Day 2 
+### Script Blocks
+	# Script Block 
+    $myblcok = {  get-service | ft name , status } 
+
+    # Call a sript block
+    & $myblock
+	$a = 1
+	$b = { 1+1 }
+	$a += &$b
+	$a 
+	
+	#Sorting and Grouping
+	
+	gci | sort 
+	gci | sort -Property length -Descending  | select Name , length -First 10
+	
+	# Find Objects methods and properties
+	gci | Get-Member
+	
+	#Sorting and grouping combined
+	gci | sort extension | ft -GroupBy extension
+	
+	# Grouping 
+	get-service | Group-Object status 
+	#Pipeline Variable == $_  
+	# grabs whatever is passed through pipeline
+	gci | Group-Object {$_.length -lt 1KB}
+	
+	# Type casting
+	1, 5, 3, 2, 4 | sort # Sorts as integers
+	'1', '5', '3', '2', '4' | sort # sorts as strings
+	'1', '5', '3', '2', '4' | sort -property {[Int]$_} #sort as integers
+	
+	
+	1..10 | sort -Property { Get-Random }
+	1..10 | Get-Random
+	
+	#select-object Only objects in pipline are those specified
+	# Where-object will allow for more selection from entire pipeline. 
+	Get-Process | select -First 10
+	
+	#Property values
+	#with headers
+	
+	Get-Process | select name, id
+	
+	#Without Headers
+	
+	Get-Process | select -Expandproperty name
+	
+	
+	# Filter results
+	
+	Get-Service | Where-Object{$_.status -eq 'running'}
+	
+	gci *.ps1 | Where-Object{$_.Length -gt 50}
+	
+	Get-Process | where {$_.Company -like 'micro*'} | ft name , description, company
+	
+	#Additional Commands 
+	# sort | get-unique *** needs to be sorted first***
+	1,1,1,4,6,6,7,2,3,4,5,6,7 | sort | Get-Unique
+	
+	# measure-object
+	gci | Measure-Object -Property length
+	(gci).count
+
+ 
