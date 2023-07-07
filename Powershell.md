@@ -231,6 +231,7 @@ compare-object
 	gci | Measure-Object -Property length -Average -Maximum -Minimum -sum
 	
 #Compare Object
+
 	'test string' > test.txt
 	$before = gci
 	'42' > test.txt
@@ -274,3 +275,17 @@ compare-object
         	"Rank" = "Recruit"
         	"MOS" = "666"
         }
+## PsProvider
+
+	#PsProvider
+	Get-PSProvider
+	Get-PSDrive
+	#Create PSDrive
+	New-PSDrive -name HKU -PSProvider Registry -Root HKEY_USERS
+	
+
+
+## Conditional Statements
+### IF/Else 
+
+ 
