@@ -158,3 +158,20 @@
     add-member -InputObject $customobject noteproperty Disks $deviceid -Force
     (Get-WmiObject -class win32_logicaldisk) | Select-Object -Property path
 
+## Comparison and Condition
+
+
+        $test1 = {$line1 | Select-String -pattern "MT5437" -SimpleMatch }
+        if (& $test1) {
+        write-host "MT5437"
+        }
+        else{
+        write-host "No model Number found"
+        }
+        $test2 = {$line2 | Select-String -pattern "MT5437" -SimpleMatch }
+        if (& $test2) {
+        write-host "Model number"
+        }
+        else{
+        write-host "No model Number found"
+        }
