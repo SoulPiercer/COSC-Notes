@@ -142,25 +142,26 @@ Compare-Object $x $y
 
 # Day 2 
 ## Commands
-gci
-get-service
-formattable
-sort-object
-get-member
-select-object
-group-object
-get-random
-where-object
-measure-object
-compare-object
+		gci
+		get-service
+		formattable
+		sort-object
+		get-member
+		select-object
+		group-object
+		get-random
+		where-object
+		measure-object
+		compare-object
 
 ## Script Blocks
 
 	# Script Block 
-    $myblcok = {  get-service | ft name , status } 
+    $myblock = {  get-service | ft name , status } 
 
 #Call a sript block
-    & $myblock
+
+    	& $myblock
 	$a = 1
 	$b = { 1+1 }
 	$a += &$b
@@ -182,7 +183,7 @@ compare-object
 #Grouping
 
 	get-service | Group-Object status 
-#Pipeline Variable == $_  
+### Pipeline Variable == $_  
 	
  	#grabs whatever is passed through pipeline
 	gci | Group-Object {$_.length -lt 1KB}
@@ -220,11 +221,12 @@ compare-object
 	Get-Process | where {$_.Company -like 'micro*'} | ft name , description, company
 	
 ## Additional Commands 
+### get-unique
 
 	# sort | get-unique *** needs to be sorted first***
 	1,1,1,4,6,6,7,2,3,4,5,6,7 | sort | Get-Unique
 	
-##measure-object
+### measure-object
 
 	gci | Measure-Object -Property length
 	(gci).count
@@ -232,6 +234,7 @@ compare-object
 	gci | Measure-Object -Property length -Average -Maximum -Minimum -sum
 	
 #Compare Object
+### Compare-Object
 
 	'test string' > test.txt
 	$before = gci
@@ -240,6 +243,7 @@ compare-object
 	Compare-Object $before $after -Property length, name
 
 ## Object Creation
+### New-Object
 	$mytruck = new-object object 
 	$mytruck | Get-Member
  
@@ -248,7 +252,7 @@ compare-object
 
 	Add-Member -MemberType NoteProperty -Name Color -Value Red -InputObject $mytruck
 	Add-Member -me NoteProperty -in $mytruck -Na Make -value Ford
-
+### Positional Parameters
 #Short handed positional parameters
 	#cmdlet     Parameter variable   MemberType   name   value
 	Add-Member -InputObject $mytruck NoteProperty Model "F-150"
@@ -290,23 +294,30 @@ compare-object
 	cd HKU:
 	
 	
-	#Conditions
+## Conditions
+### -eq / -ne
 	#equals / not equals
 	-eq / -ne 
 	#case insensitive 
 	-ieq 
 	#case sensitive 
 	-ceq
+ 	
+	4 -eq 4
+	# returns true
 	
+	7, 8, 9 -eq 8
+	# returns 8
 	
+### -match | -like
 	#Match 
 	-like # used with wildcards
 	-match # used with regex
 	
-	
+### -replace 
 	# Replacement 
 	-replace # can use regex
-	
+### Containement
 	#containment
 	-contains / -notcontains
 	-in / -notin
@@ -314,15 +325,10 @@ compare-object
 	#type
 	-is / -isnot
 	
-	4 -eq 4
-	# returns true
-	
-	7, 8, 9 -eq 8
-	# returns 8
 	
 	
 	
-	
+### -gt | -lt
 	$num = 5
 	(($num -gt 1) -and ($num -lt 10))
 	
@@ -332,7 +338,9 @@ compare-object
 	if ($x -gt 10) { "$x is larger than 10"}
 	
 	$x = 7
-	
+
+## If Statements 
+
 	if ($x -eq 5) {
 	    write-host "Condition is true $x is equal to 5" -ForegroundColor Blue
 	
@@ -356,8 +364,9 @@ compare-object
 	}
 	
 	
-	#Loops
-	
+## Loops
+### ForEach-Object
+
 	#ForEach-Object ### Executes code on each object sent through pipeline
 	
 	$nums = 1, 2, 3 ,4, 5
@@ -368,11 +377,14 @@ compare-object
 	
 	gci | ForEach-Object { $_.length / 1kb }
 	
-	
+### ForEach
+
 	#ForEach, no pipeline
 	#needs to wait for gci results
+ 
 	foreach ($i in gci C:\ -Recurse) {$i.name}
 	#Results as it iterates through 
+ 
 	gci C:\ -Recurse | ForEach-Object{$_.name}
 	
 	foreach($num in 1..5){$num * 2}
@@ -384,7 +396,8 @@ compare-object
 	}
 	
 	
-	#While
+## While
+
 	$num = 0
 	while ($num -lt 3) {
 	    $num
@@ -396,7 +409,8 @@ compare-object
 	    $var = read-host "Which branch of the military is the best?"
 	}
 	
-	#Do While 
+## Do While 
+
 	## Will run at least once 
 	$num = 0
 	do {
@@ -404,7 +418,8 @@ compare-object
 	    $num++
 	}while($num -lt 3)
 	
-	#Do Until
+## Do Until
+
 	$num = 0
 	do {
 	    $num
@@ -412,7 +427,8 @@ compare-object
 	}until($num -gt 3)
 	
 	
-	#For Loops
+## For Loops
+
 	for ($num =1; $num -le 3; $num++){$num}
 	
 	
@@ -423,7 +439,8 @@ compare-object
 	
 	
 	
-	#Reading and writing to a file
+## Reading and writing to a file
+
 	"Hello" > hello.txt
 	set-content -Path .\example.txt -Value "A string" # Overwrites file
 	Add-Content -Path .\example.txt -Value "another one" # Appends to a file
@@ -431,7 +448,7 @@ compare-object
 	cat .\example.txt 
 	
 	
-	#PowerShell Scripts
+## PowerShell Scripts
 	
 	'"Odoyle Rules!"' > 1-script.ps1
 	.\1-script.ps1
