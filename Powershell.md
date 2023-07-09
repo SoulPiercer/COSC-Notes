@@ -253,9 +253,10 @@ Compare-Object $x $y
 	Add-Member -MemberType NoteProperty -Name Color -Value Red -InputObject $mytruck
 	Add-Member -me NoteProperty -in $mytruck -Na Make -value Ford
 ### Positional Parameters
-#Short handed positional parameters
-	#cmdlet     Parameter variable   MemberType   name   value
-	Add-Member -InputObject $mytruck NoteProperty Model "F-150"
+
+	#Short handed positional parameters
+		#cmdlet     Parameter variable   MemberType   name   value
+		Add-Member -InputObject $mytruck NoteProperty Model "F-150"
 
 #adding properties through a pipeline
 	$mytruck | Add-Member NoteProperty Cab SuperCrew
