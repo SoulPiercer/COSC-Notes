@@ -133,6 +133,28 @@
   
     Get-HotFix | sort -Property InstalledOn | select InstalledOn , HotFixId
 
+
+
   5.) Extend the expression further, but sort by description, include description, hotfix id and install date
   
     Get-HotFix | sort -Property Description | select Description , InstalledOn , HotFixId
+
+
+# Day 2 
+
+## Custom Object 
+
+    $computersystem = ((Get-WmiObject -class win32_computersystem).name )
+    $operatingsystem = ((Get-WmiObject -class win32_operatingsystem).name)
+    $version = ((Get-WmiObject -class win32_operatingsystem).version )
+    $manufacturer = ((Get-WmiObject -class win32_Bios).manufacturer)
+    $deviceid = ((Get-WmiObject -class win32_logicaldisk) | select -Property path )
+    
+    (Get-WmiObject -class win32_logicaldisk) | select -Property path
+    add-member -InputObject $customobject noteproperty Win32_ComputerSystem $computersystem -Force
+    add-member -InputObject $customobject noteproperty OperatingSystem $operatingsystem 
+    add-member -InputObject $customobject noteproperty Version $version 
+    add-member -InputObject $customobject noteproperty Manufacturer $manufacturer
+    add-member -InputObject $customobject noteproperty Disks $deviceid -Force
+    (Get-WmiObject -class win32_logicaldisk) | Select-Object -Property path
+
