@@ -515,10 +515,10 @@ Compare-Object $x $y
 		
 		# Adds padding up to five digits
 		"{0:d5}" -f 123
-		
+### F Strings -f
 		get-service | select -First 10 | ForEach-Object{"The service {0} is called '{1}': {2}" -f $_.Name, $_.DisplayName, $_.Status}
 		get-service | select -first 10
-		
+
 		filter namedthis {
 		  if ($_.name -match "file.txt") {$_}
 		}
