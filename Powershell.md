@@ -468,8 +468,6 @@ Compare-Object $x $y
  ## Functions
 
 
-
-
  ## String Methods
 		$text1 = "One Terabye is $(1TB / 1GB) Gigabytes"
 		$text1
