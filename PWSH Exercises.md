@@ -175,3 +175,156 @@
         else{
         write-host "No model Number found"
         }
+    
+    $lines = $line1 , $line2
+    $count = 1
+    
+    foreach ($line in $lines) {
+    if ($line -match "MT5437") {
+    write-host "line $count contains a model number"
+    }
+    else {
+    write-host "No model number was found in line $count"
+    }
+    $count += 1
+    }
+
+## Looping and Iteration
+    
+    $apps = "notepad", "MSEdge", "MSpaint"
+    ForEach ($app in $apps) { 
+    start $app 
+    
+    Stop-Process -name "$app" 
+    
+    }    
+    start notepad
+    
+    
+    foreach ($app in $apps) {
+    start $app
+    (get-process $app).Id > procs.txt
+    
+    
+    (Get-Process $app) >> processes.txt
+    
+    foreach ($id in get-content procs.txt) { 
+    Stop-Process -id $id
+    }
+    
+    }
+    processes.txt
+    
+    $apps = "notepad", "MSEdge", "MSpaint"
+    ForEach ($app in $apps) { 
+    start $app
+     
+    }
+    Get-Process notepad, msedge, mspaint | Sort-Object -Property id | select -Property id, Processname, starttime, totalprocessortime, virtualmemorysize64 | ft
+    Get-Process | Get-Member
+    
+
+
+## Create Functions 
+
+    function get-ordinaldate {
+    $year=(get-date).year 
+    $day = (get-date).DayOfYear
+    write-host $year"-"$day
+    }
+    get-ordinaldate
+    Get-Date | Get-Member
+    
+    function get-squareNum {
+    param (
+    $n = 'Enter a Number'
+    )
+    write-host ($n * $n) 
+    }
+    get-squareNum 4
+    
+    function get-product ( $num1 , $num2 , $num3 ){
+    $num1 * $num2 * $num3 
+    }
+    get-product 2 4 6
+
+
+## Function Parameters
+
+    function pythagarous ($a , $b){
+    $a2 = $a * $a 
+    $b2 = $b * $b
+    $c2 = $a2 + $b2
+    $c = [math]::Sqrt($c2)
+    $c 
+    }
+    pythagarous 3 4 
+    
+    
+    function triangle ($a , $b) {
+    $c = 180 - $a - $b
+    $c
+    }
+    
+    triangle 90 45
+    
+    function bmi {
+    param([Parameter(mandatory=$true, HelpMessage='Enter FirstName')]
+    $FirstName, [Parameter(mandatory=$true, HelpMessage='Enter LastName')]
+    $LastName, [Parameter(mandatory=$true, HelpMessage='Enter Age')]
+    $Age , [Parameter(mandatory=$true, HelpMessage='Enter Weight')]
+    $Weight
+    )
+    $lbs = 2.2
+    $WeightKG = $Weight / $lbs
+    
+    $table = @{FirstName = $FirstName; LastName = $LastName; Age = $Age; Weight = [int]$WeightKG}
+    $table
+    }
+    bmi
+
+## Advanced Functions 
+
+    function get-mulitsum  {
+        [CmdletBinding()]
+        param( $numbers, $loneNum)
+        BEGIN {
+        
+        $sum = 0}
+        PROCESS { 
+        
+            foreach ($number in $numbers) { 
+                if ($number -ne $loneNum) {
+                    $sum += $number
+                }
+            }
+        }
+        END{
+            $sum
+            }
+    }
+    
+    get-mulitsum @(1,2,3,4,5,6,7,8,9,10,5,4,6) 5
+
+
+    
+    function get-LongestName {
+        [CmdletBinding()]
+        param($State1, $State2, $State3 )
+        BEGIN{
+        $longestName = @{}
+        $states = $State1, $state2, $state3
+        } 
+        PROCESS{ 
+        foreach ($state in $states) {
+            $longestName[$state] = $state.Length
+            
+        }
+        }
+        END{
+        $longestName.GetEnumerator() | sort -Descending Value
+        }
+        }
+        get-LongestName "Tenneessee" " Georgia" "Utah"
+
+## Regex
