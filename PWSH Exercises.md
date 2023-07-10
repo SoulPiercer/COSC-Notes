@@ -190,15 +190,13 @@
     }
 
 ## Looping and Iteration
-    
+
+  # Gunny's example ForEach-Object
     $apps = "notepad", "MSEdge", "MSpaint"
-    ForEach ($app in $apps) { 
-    start $app 
-    
-    Stop-Process -name "$app" 
-    
-    }    
-    start notepad
+    $apps | ForEach-object {start-process $_ } 
+    get-process -name notepad, edge, mspaint
+    $apps | forEach-object { Stop-Process $_ }    
+     
     
     
     foreach ($app in $apps) {
@@ -222,7 +220,8 @@
     }
     Get-Process notepad, msedge, mspaint | Sort-Object -Property id | select -Property id, Processname, starttime, totalprocessortime, virtualmemorysize64 | ft
     Get-Process | Get-Member
-    
+
+
 
 
 ## Create Functions 
