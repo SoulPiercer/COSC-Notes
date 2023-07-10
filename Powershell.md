@@ -465,4 +465,64 @@ Compare-Object $x $y
 	'@ > 2-script.ps1
 	.\2-script.ps1
 
- 
+ ## Functions
+
+
+
+
+ ## String Methods
+		$text1 = "One Terabye is $(1TB / 1GB) Gigabytes"
+		$text1
+		
+### Quotes
+		 
+		$text = @"
+		1TB equals $(1TB / 1GB) GB.
+		Variables are resolved
+		Here is some text with `"quotes`".
+		Here is the name `$text1
+		"@
+		$text 
+		
+### Formating Strings
+		
+		"Hello John" -replace "John", "World"
+		ipconfig
+		(ipconfig).gettype()
+		(ipconfig) -match 'IPv4'
+		"powershell is awesome!" -match "\w+(\?|!)"
+		$Matches
+		
+		'192.168.5.1' -replace '\d{1,3}$', '255'  # Replace last octet with new value
+		
+#### -replace
+		
+		$list = 'comp1','comp10','comp13'
+		$pattern = 'comp(\d{1,3})'
+		$list -replace $pattern, 'Computer$1' # $1 refers to basic match 
+		
+		$list -replace $pattern, 'Computer$1 (This changed from $0)'  # $0 refers to whole match
+		
+#### Splitting
+		$profile -split '\\' # Escape the backslash
+		
+		
+		
+		
+### Rounding numbers
+		# Rounds to the third decimal spot
+		"{0:n3}" -f 123.45678
+		
+		# Adds padding up to five digits
+		"{0:d5}" -f 123
+		
+		get-service | select -First 10 | ForEach-Object{"The service {0} is called '{1}': {2}" -f $_.Name, $_.DisplayName, $_.Status}
+		get-service | select -first 10
+		
+		filter namedthis {
+		  if ($_.name -match "file.txt") {$_}
+		}
+		gci  | ?{$_ | namedthis}
+
+
+ 	
