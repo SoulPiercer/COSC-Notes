@@ -1,6 +1,8 @@
 # PowerShell Day 1
 ### xfreerdp /u:student /v:10.50.29.77 -dynamic-resolution +glyph-cache +clipboard
-https://cted.cybbh.io/tech-college/pns/public/pns/latest/powershell/pe_arrays_hash_tables.html
+
+https://cted.cybbh.io/tech-college/pns/public/pns/latest/guides/ps_sg.html
+
 ## Commands 
 	
 	Get-Command
@@ -466,6 +468,8 @@ Compare-Object $x $y
 	.\2-script.ps1
 
  ## Functions
+cmdlet binding
+parameters
 
 
  ## String Methods
