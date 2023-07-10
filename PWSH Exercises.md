@@ -175,7 +175,7 @@
         else{
         write-host "No model Number found"
         }
-    
+    ------------------------------
     $lines = $line1 , $line2
     $count = 1
     
@@ -328,3 +328,5 @@
         get-LongestName "Tenneessee" " Georgia" "Utah"
 
 ## Regex
+
+
