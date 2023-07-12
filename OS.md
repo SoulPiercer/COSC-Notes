@@ -1,6 +1,17 @@
 # Day 1
 
-#1 10.50.24.0  ----- Personal Admin IP
+#1 10.50.43.15  ----- Personal Admin IP
+
+Admin Workstation ==== xfreerdp /u:andy.dwyer /v:10.50.43.15 -dynamic-resolution +glyph-cache +clipboard
+
+CTFD ==== http://10.50.24.129:8000/
+
+username: NIRI-M-505
+password: N1ckn@ckpattywack
+
+class: M23505
+Password: password
+
 
 ## OS Module public repo
 https://os.cybbh.io/public/os/latest/index.html
