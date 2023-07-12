@@ -1,5 +1,7 @@
 # Day 1
 
+#1 10.50.24.0  ----- Personal Admin IP
+
 ## OS Module public repo
 https://os.cybbh.io/public/os/latest/index.html
 
