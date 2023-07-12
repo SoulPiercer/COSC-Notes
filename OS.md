@@ -46,6 +46,7 @@ xfreerdp /u:student /v:10.50.29.77 -dynamic-resolution +glyph-cache +clipboard
     get-ciminstance -classname win32_logicaldisk -filter "drivetype=3" | get-member
     get-wmiobject -class win32_logicaldisk -filter "drivetype=3"
 
+	(Get-CimInstance -ClassName Win32_Service | where-object{$_.name -eq "Legoland"}).Description
     
     get-executionpolicy -list
     set-executionpolicy -ExecutionPolicy Unrestricted -scope CurrentUser
