@@ -108,3 +108,45 @@ Download a File with Powershell
 
   (1) Create a new Webclient object
 	(2) Use the Downloadfile method to download a file
+
+
+
+# Day 2
+## Windows Registry
+HKLM\hardware is the volatile hive
+
+GUI : C:\windows\regedit.exe
+cli : C:\windows\system32\reg.exe 
+
+Powershell: 
+	Root Hive Keys are loaded as powershell drives
+ Extract Info:
+ 	
+  	get-item # gets all values listed under subkey
+   	get-itemproperty 
+    	get-childitem # retrieves all subkeys 
+  Change information:
+  	
+   	set-itemproperty, remove-itemproperty, new-item, new-itemproperty
+   
+Mount a Remote Regisry via Regedit
+
+Using Powershell Registry
+	Query : Analyze : Modify : create
+Using PSDRIVE
+	new-PSDrive -name HKU -PSProvider Registry -Root HKEY_USERS
+ 
+Every Key is read at startup : changes will be made at reboot 
+
+
+
+## Alternate Data streams
+		echo "Always do your best" > reminder.txt
+		Set-Content .\reminder.txt -Value "social security numbers" -Stream secret.info
+		Get-Item reminder.txt -Stream * 
+		Get-Content reminder.txt -Stream secret.info 
+		
+
+
+
+
