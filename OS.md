@@ -149,6 +149,8 @@ Every Key is read at startup : changes will be made at reboot
 
 # Day 3
 # Linux
-ssh -J andydwyer@ADMIN user@ip
+ssh -J andy.dwyer@ADMIN user@ip
 
+
+use strings on binary file to make it human readable
 
