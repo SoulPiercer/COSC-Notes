@@ -147,6 +147,8 @@ Every Key is read at startup : changes will be made at reboot
 		Get-Content reminder.txt -Stream secret.info 
 		
 
-
+# Day 3
+# Linux
+ssh -J andydwyer@ADMIN user@ip
 
 
