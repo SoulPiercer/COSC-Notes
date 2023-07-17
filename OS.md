@@ -154,3 +154,31 @@ ssh -J andy.dwyer@ADMIN user@ip
 
 use strings on binary file to make it human readable
 
+
+
+# Day 4
+
+# Windows Boot Process
+
+## BCDEDIT Demo
+
+	Display current BCD config:
+ 		bcdedit.exe
+  	Backup BCD Configuration : 
+		bcdedit /export C:\SAVEDBCD
+  
+
+		
+  
+## Persistence     
+	services.exe(0) --> SCM Starts all services automatically with highest priviledges.
+	Registry Keys
+
+
+
+
+
+
+
+
+
