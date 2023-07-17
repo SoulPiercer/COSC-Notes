@@ -167,15 +167,22 @@ use strings on binary file to make it human readable
   	Backup BCD Configuration : 
 		bcdedit /export C:\SAVEDBCD
   
+c:\Windows\system32\sc.exe
 
-		
+.\tasklist.exe /svc
+
+reg queries 
+
+
+	.\bcdedit.exe
+Back it up: 
+	
+ 	.\bcdedit.exe /export C:\BCD.bk
+ 
   
 ## Persistence     
 	services.exe(0) --> SCM Starts all services automatically with highest priviledges.
 	Registry Keys
-
-
-
 
 
 
