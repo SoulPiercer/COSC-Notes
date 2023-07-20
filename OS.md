@@ -204,3 +204,12 @@ sysinternals
  	./strings.exe C:\Windows\System32\*.exe -accepteula | select-string -simplematch "autoelevate"
 
    	./sigcheck -m C:\Windows\System32\slui.exe -accepteula | Select-String -SimpleMatch "level"
+
+# Day 7 Linux Process Validity
+
+	
+Interacting with services on Systemd --> systemctl
+		systemctl list-units 
+  		systemctl list-units --all
+		systemctl start/stop/restart <servicename.service>
+  		sytsemctl status <servicename.service / PID of service>
