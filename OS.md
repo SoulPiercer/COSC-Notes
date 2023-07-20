@@ -186,6 +186,21 @@ Back it up:
 
 
 
+# Day 6
+sysinternals
+	accesschk.exe
 
+# UAC
 
+	net use * http://live.sysinternals.com
+ 	z:
+	
+ 	new-psdrive -name "SysInt" -PSProvider FileSystem -Root "\\live.sysinternals.com\Tools"
 
+	$wc = New-Object System.Net.WebClient 
+	# $wc.DownloadFile($url, $output)
+	$wc.DownloadFile("https://download.sysinternals.com/files/SysinternalsSuite.zip","$pwd\SysinternalsSuite.zip")
+ 
+ 	./strings.exe C:\Windows\System32\*.exe -accepteula | select-string -simplematch "autoelevate"
+
+   	./sigcheck -m C:\Windows\System32\slui.exe -accepteula | Select-String -SimpleMatch "level"
