@@ -243,6 +243,7 @@ View Shortcut files executed: Paste output into cyberchef using ROT13
 
 	Get-Itemproperty 'HKLM:\SYSTEM\CurrentControlSet\Services\bam\state\UserSettings\*' (Windows 1809 and newer)
 
+ 	Get-ItemProperty 'registry::HKLM\SYSTEM\CurrentControlSet\Services\bam\UserSettings\*'
 
 ## Recycle Bin:
 
