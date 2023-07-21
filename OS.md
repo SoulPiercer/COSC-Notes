@@ -213,3 +213,134 @@ Interacting with services on Systemd --> systemctl
   		systemctl list-units --all
 		systemctl start/stop/restart <servicename.service>
   		sytsemctl status <servicename.service / PID of service>
+
+
+# Day 8 Windows Artifacts, Auditing and Logging
+## Getting User SID:
+	
+ 	get-wmiobject win32_useraccount | select name,sid (PowerShell Local and domain users)
+
+	Get-LocalUser | select Name,SID (PowerShell Local Users)
+
+	wmic useraccount get name,sid (CMD.EXE ONLY)
+
+*Determine name of SID:*
+	
+ 	wmic useracount where 'sid="***"' get name
+
+ View Executable Files run: Paste output into cyberchef using ROT13
+
+  	Get-ItemProperty 'REGISTRY::HKEY_USERS\*\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count'
+
+View Shortcut files executed: Paste output into cyberchef using ROT13
+
+ 	Get-ItemProperty 'REGISTRY::HKEY_USERS\*\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{F4E57C4B-2036-45F0-A9AB-443BCFE33D9F}\Count'
+
+
+## Windows Background Activity Monitor (BAM)
+
+ 	Get-Itemproperty 'HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\*' (Windows 1709 & 1803)
+
+	Get-Itemproperty 'HKLM:\SYSTEM\CurrentControlSet\Services\bam\state\UserSettings\*' (Windows 1809 and newer)
+
+
+## Recycle Bin:
+
+	gci 'C:\$RECYCLE.BIN' -Recurse -Verbose -Force | select *
+
+	gci 'C:\$RECYCLE.BIN' -Recurse -Force
+
+ 
+
+
+$RXXXXXX - content of deleted files
+
+$IXXXXXX - original PATH and name
+
+Location:
+
+C:\$Recycle.bin (Hidden System Folder)
+
+Get content of file in recylcing bin:
+	
+ 	Get-Content 'C:\$Recycle.Bin\S-1-5-21-1584283910-3275287195-1754958050-1005\$R8QZ1U8.txt' 
+
+## Prefetch:
+	Created when when an application is run rom a specific location for the first time
+ 	
+	gci -Path 'C:\Windows\Prefetch' -ErrorAction Continue | select * | select -first 5
+
+## Jump Lists
+
+allos users to "jump" or access items they have requently or recently used quickly and easily
+
+	gci -Recurse C:\Users\*\AppData\Roaming\Microsoft\Windows\Recent -ErrorAction Continue | select FullName, LastAccessTime
+or
+
+- Make sure sysinternals is mounted or unzipped
+- 	net use * http://live.sysinternals.com
+
+- Gci C:\users\student\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations | % {z:\strings.exe -accepteula $_} >> c:\recentdocs.txt
+
+## Recent Files
+
+List Files in Recent Docs
+
+	gci 'REGISTRY::HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs'
+
+Convert File Hex to Unicode
+
+	[System.Text.Encoding]::Unicode.GetString((gp "REGISTRY::HKEY_USERS\*\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt")."0")
+
+Convert all of a users values from HEX to Unicode
+
+    Get-Item "REGISTRY::HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt" | select -Expand property | ForEach-Object { [System.Text.Encoding]::Default.GetString((Get-ItemProperty -Path "REGISTRY::HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt" -Name $_).$_)}
+
+
+## Browser Artifacts
+
+History will record the access to the file on the website that was accessed via a link.
+
+	.\strings.exe 'C:\Users\<username>\AppData\Local\Google\Chrome\User Data\Default\History'
+
+Find FQDNs in Sqlite Text Files
+
+	$History = (Get-Content 'C:\users\<username>\AppData\Local\Google\Chrome\User Data\Default\History') -replace "[^a-zA-Z0-9\.\:\/]",""
+	
+	$History| Select-String -Pattern "(https|http):\/\/[a-zA-Z_0-9]+\.\w+[\.]?\w+" -AllMatches|foreach {$_.Matches.Groups[0].Value}| ft
+
+## Logs
+
+Eventlogs
+	-Application
+ 	-Security
+  	-System
+   	-CustomLog
+	
+Powershell 
+
+	    View newest 10 System Logs
+
+        Get-EventLog -LogName System -Newest 10 | ft -wrap
+
+    View the entire message field in the Security Log
+
+        Get-Eventlog -LogName Security | ft -wrap
+
+    Search logs with mutiple criteria
+
+        get-winevent -FilterHashtable @{logname="security";id="4624"} | select -first 5 | ft -wrap
+
+ Powershell Transcript 
+ 
+    Allows the capture of the input and output of Windows PowerShell commands into text-based transcripts.
+
+        Start-Transcript
+
+    View Powershell console History
+
+        Get-History
+
+    View entire powershell History
+
+        Get-Content "C:\users\$env:username\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt"
