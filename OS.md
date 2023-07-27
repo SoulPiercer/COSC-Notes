@@ -345,3 +345,7 @@ Powershell
     View entire powershell History
 
         Get-Content "C:\users\$env:username\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt"
+
+# Day 11 Windows Active Directory Enumeration
+
+	
