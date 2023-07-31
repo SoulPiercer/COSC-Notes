@@ -1,6 +1,8 @@
 OS Review
 
-
+student - password
+Windows ----  10.50.41.249 
+Linux ----  10.50.28.56
 
 
 Windows
