@@ -94,5 +94,27 @@ Responsibilities
 
 ## (7) Application Layer
 
+# FINISH NOTES FTP 
+# FINISH NOTES SSH
+
 
   
+## NETWORK TRAFFIC SNIFFING
+
+
+  ### Berkeley Packet Filters (BPF)
+
+        Used with Operators, bitmasking, and TCPDump to create a tool for traffic filtering and parsing
+    
+    tcpdump {A} [B:C] {D} {E} {F} {G}
+
+    A = Protocol (ether | arp | ip | ip6 | icmp | tcp | udp)
+    B = Header Byte offset
+    C = optional: Byte Length. Can be 1, 2 or 4 (default 1)
+    D = optional: Bitwise mask (&)
+    E = Operator (= | == | > | < | <= | >= | != | () | << | >>)
+    F = Result of Expresion
+    G = optional: Logical Operator (&& ||) to bridge expressions
+    
+    Example:
+    tcpdump 'ether[12:2] = 0x0800 && (tcp[2:2] != 22 && tcp[2:2] != 23)'
