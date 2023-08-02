@@ -95,10 +95,27 @@ Responsibilities
 ## (7) Application Layer
 
 # FINISH NOTES FTP 
-# FINISH NOTES SSH
-
-
+  TCP 20/21
+  ACTIVE / PASSIVE
   
+# FINISH NOTES SSH
+ SSH (TCP 22) 
+
+      TELNET (TCP 23)
+      SMTP (TCP 25)
+      TACACS (TCP 49) SIMPLE/EXTENDED
+      HTTP(S) (TCP 80/443)
+      POP (TCP 110)
+      IMAP (TCP 143)
+      RDP (TCP 3389)
+      DNS (QUERY/RESPONSE) (TCP/UDP 53)
+      DHCP (UDP 67/68)
+      TFTP (UDP 69)
+      NTP (UDP123)
+      SNMP (UDP 161/162)
+      RADIUS (UDP 1645/1646 AND 1812/1813)
+      RTP (UDP any above 1023)
+      
 ## NETWORK TRAFFIC SNIFFING
 
 
