@@ -147,4 +147,39 @@ ip[0] & 0x0F > 0x05
 
   Brackets select first byte; 0x0F selects 2nd Nibble in 1st byte.
 
-  
+  Most Exclusive
+    
+     Filters for flag and fragment offset field with ONLY Don't Fragment flag on.
+     ip[6:2] & 0xE000 = 0x4000 
+
+    Filtering on a specific Ip Address
+      tcpdump '(ip[12] = 192 && ip[13] = 168 && ip[14] = 14 && ip[15] = 2)'
+      ip[12:4] & 0xFFFFFFFF = 0xC0A80E02
+      
+   Less Exclusive
+
+      Filters for the Don't Fragment flag AND any other bits on.
+      ip[6:2] & 0x4000=0x4000
+
+      Filter on S.IP = 192.168.14.0/24 subnet
+      ip[12:4] &0xFFFFFF00 = 0xC0A80E00
+          
+  Least Exclusive
+
+      At least one of the designated bits must be set to not equal 0; all other may be set
+
+      ip[6:2] & 0x1FFF!=0
+      tcp[13] & 0x12 != 0 
+      
+## Layer 2 Switching Technologies
+
+Fast Forward - Only Destination MAC
+Fragment Free - First 64 bytes
+Store and forward - Entire Frame and FCS
+
+### Double tagging
+
+    0x88A80002 --> 0x81000064
+    0x91000002 --> 0x81000064
+    
+      
