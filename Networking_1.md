@@ -16,7 +16,7 @@ https://net.cybbh.io/public/networking/latest/index.html
 ## Double tagging:
   
       trying to bypass switch configuration. 
-### (2) Data Link Layer
+## (2) Data Link Layer
     Data Link Sub-Layers
             MAC (Media Access Control) 
             LLC (Logical Link Control)
@@ -31,7 +31,7 @@ ARP HEADER
 ![image](https://github.com/SoulPiercer/COSC-Notes/assets/108113301/92966807-355b-48fc-9331-f0cb99c6ed81)
 
 
-### (3) Network Layer
+## (3) Network Layer
 ### IPV4 HEADERS
 ![image](https://github.com/SoulPiercer/COSC-Notes/assets/108113301/38ff8fc2-33fc-45fb-8e3d-11d2ef0095c3)
 
@@ -77,3 +77,22 @@ TCP or UDP
 ![image](https://github.com/SoulPiercer/COSC-Notes/assets/108113301/a30089e2-1380-4364-8c6d-24f9b0b6e355)
 
 
+## (5) Session Layer
+Protocols
+  -Socks
+  -NetBios
+  -PPTP/L2TP (VPN's)
+  -RPC
+
+## (6) Presentation Layer
+Responsibilities
+  -Translation
+  -Formating
+  -Encoding
+  -Encryption
+  -Compression
+
+## (7) Application Layer
+
+
+  
