@@ -135,3 +135,16 @@ Responsibilities
     
     Example:
     tcpdump 'ether[12:2] = 0x0800 && (tcp[2:2] != 22 && tcp[2:2] != 23)'
+
+  ### Bitwise Masking
+
+  #Filter down to bit ; not just byte
+
+Filter down to IP header Length  greater than 5
+ip[0] & 0x0F > 0x05
+
+  ![image](https://github.com/SoulPiercer/COSC-Notes/assets/108113301/fe86730c-e014-4d8d-b9b7-69a6c983f31d)
+
+  Brackets select first byte; 0x0F selects 2nd Nibble in 1st byte.
+
+  
