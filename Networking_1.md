@@ -2,6 +2,9 @@
 
 https://net.cybbh.io/public/networking/latest/index.html
 
+# CTFD-2
+ http://10.50.23.147:8000/
+ user/pass: NIRI-505-M
 
 ## Mathematics of Networking
 
