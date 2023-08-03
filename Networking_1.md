@@ -185,4 +185,12 @@ Store and forward - Entire Frame and FCS
     0x88A80002 --> 0x81000064
     0x91000002 --> 0x81000064
     
+
+
+# CTFD Basic Analysis
+
+   All ip and ipv6 with udp 
       
+      ip[9]=17||ip6[6]=17
+
+   
