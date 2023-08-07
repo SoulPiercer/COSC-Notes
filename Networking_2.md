@@ -88,5 +88,14 @@ Run nc command in separate window before running script
 ![image](https://github.com/SoulPiercer/COSC-Notes/assets/108113301/2b00de83-f1c3-43be-bfaa-f45725d1b090)
 
 ![image](https://github.com/SoulPiercer/COSC-Notes/assets/108113301/541006a6-a256-4bb3-956d-da54ab8a7de7)
+#### RAW TCP Socket
+
+![image](https://github.com/SoulPiercer/COSC-Notes/assets/108113301/0eb81167-d62f-4717-bb0f-682ed068be65)
+![image](https://github.com/SoulPiercer/COSC-Notes/assets/108113301/67d72f66-4c65-4d74-a6de-a41f41255f61)
+![image](https://github.com/SoulPiercer/COSC-Notes/assets/108113301/1de68ed8-f50f-4e96-b375-f281f54f7b5f)
+
+
+*** Don't forget to change ip_proto field in th IPv4 Header to 6 (TCP)
+
 
   
