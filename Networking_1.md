@@ -1,6 +1,7 @@
 # Networking Day 1
 
 https://net.cybbh.io/public/networking/latest/index.html
+
 # Internet Host
 ssh student@10.50.45.7 -X
 password: password
