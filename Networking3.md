@@ -71,50 +71,52 @@ scan.sh
     # ( | grep succeeded) for Ubuntu to display only the open connections
 
 ### Passive Internal Commands
-  cat /etc/hosts
-  cat /etc/resolv.conf
-  netstat -ntulp      # Check open ports (deprecated)
-  ss -ntulp           # Check open ports
-  ps -elf / top       # Check all running processes
-  w/who               # Identify users logged onto box
-  ifconfig            # Interface IP's (deprecated)
-  ip address          # Interface IP's
-  ip neighbor         # Arp Cache
-  ip route            # ip routes
+      cat /etc/hosts
+      cat /etc/resolv.conf
+      netstat -ntulp      # Check open ports (deprecated)
+      ss -ntulp           # Check open ports
+      ps -elf / top       # Check all running processes
+      w/who               # Identify users logged onto box
+      ifconfig            # Interface IP's (deprecated)
+      ip address          # Interface IP's
+      ip neighbor         # Arp Cache
+      ip route            # ip routes
 
 ## Mapping
 
-0.0.0.0:[port #] will allow access to port from any ip address
-
-6010, 6011, 6012 == x11 forwarding
+    0.0.0.0:[port #] will allow access to port from any ip address
+    
+    6010, 6011, 6012 == x11 forwarding
 
 # Host Discovery: 
-Find: Hostname ; IpAdress ; ports
+        Find: Hostname ; IpAdress ; ports
 
 ## Ping sweep
-for i in {1..254}; do ping -c 1 -W 1 10.1.1.$i | grep 'from'; done
+        for i in {1..254}; do ping -c 1 -W 1 10.1.1.$i | grep 'from'; done
 ## Nmap
-nmap -vv ip/cider
-#Default is top 1000 most used ports, scarcely use default
-#Most devices will use 21,23,80 unless otherwise given a hint
-nmap -Pn 172.16.20.0/24 -p 21,22,23,80 | egrep "open" -C4
-nmap -Pn 172.16.20.0/24 -p 21,22,23,80 | egrep "filtered" -C4
+        nmap -vv ip/cider
+        #Default is top 1000 most used ports, scarcely use default
+        #Most devices will use 21,23,80 unless otherwise given a hint
+        nmap -Pn 172.16.20.0/24 -p 21,22,23,80 | egrep "open" -C4
+        nmap -Pn 172.16.20.0/24 -p 21,22,23,80 | egrep "filtered" -C4
 
 Banner Grabbing:
   nc  <ip> <port>
 
 ## Web Requests:
-wget -r <ip>    # gets content of a webpage and saves it file
-wget -r ftp:<ip>
-curl <ip>     # gets url of webpage
+    wget -r <ip>:<webport>   # gets content of a webpage and saves it file
+    wget -r ftp://<ip>
+    curl <ip>     # gets url of webpage
+## Telnet
+telnet <alternate Port>
 # Internal Discovery
 
 ## ftp server
-ftp <ip>
-user: anonymous, no password
+    ftp <ip>
+    user: anonymous, no password
 ## Routers:
-  sh config   # bgp 10 to find external networks  # 
-  show int    # Find internal network connections
-  hostname
-  ss -ntlp
-  
+      sh config   # bgp 10 to find external networks  # 
+      show int    # Find internal network connections
+      hostname
+      ss -ntlp
+      
