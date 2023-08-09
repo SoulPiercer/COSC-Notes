@@ -45,6 +45,10 @@ Netcraft
 ## Scanning
 nmap -A -T4 --min-rate 10000 -Pn <target Host/netork> -vvvv
 
+
+
+nmap -PS21-50 55.66.77.22
+
 ### netcat script:
 scan.sh
 
@@ -120,3 +124,4 @@ telnet <alternate Port>
       hostname
       ss -ntlp
       
+## Netcat to get information being sent from sockets on each port ( -u to specify udp)
