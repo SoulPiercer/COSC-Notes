@@ -27,9 +27,9 @@
           ssh student@172.16.1.15 -L 1111:172.16.40.10:22 -NT
           ssh student@localhost -p 1111 -L 2222:172.16.82.106:80 -NT
           firefox localhost:2222
-    * SSH Dynamic Port Forwarding
+  ### SSH Dynamic Port Forwarding
    
-          ssh -D <port> -p <alt port> <user>@<pivot ip> -NT
+  ssh -D <port> -p <alt port> <user>@<pivot ip> -NT
         * Proxychains default port is 9050
         * Allows the use of scripts and other userspace programs through the tunnel.
         * SSH Dynamic Port Forwarding 1-Step
@@ -40,7 +40,7 @@
               proxychains ./scan.sh
               proxychains ssh student@10.10.0.40
 
-        * SSH Dynamic Port Forwarding 2-Step
+  * SSH Dynamic Port Forwarding 2-Step
 
               Blue Private Host-1:
               ssh student@172.16.82.106 -L 1111:10.10.0.40:22 -NT
@@ -71,7 +71,7 @@
 ### Remote Port Forwarding -R
 Since we have ssh connection to colby, but not steve, we need to create a tunnel to forward traffic from port 42199 on colby to steve open an ssh connection on steve 
       
-      steve> ssh colby@colby ip -R 42199:127.0.0.1:22 -NT
+      steve> ssh colby@colby_ip -R 42199:127.0.0.1:22 -NT
 
 ssh into colby and then forward traffic from port 42101 on internet host to loopback:42199 on colby
 
@@ -91,13 +91,37 @@ Local Port forwarding from host to steve to allow connection to dj
       h> ssh -p 42102 steve@127.0.0.1 -L 42103:127.0.0.1:42198 -NT
       h> telnet 127.0.0.1 42103
           ehlo
+Dynamic Port forwarding to Steve
 
-      
+    h> ssh -p 42102 steve@127.0.0.1 -D 9050 -NT
+    h> proxychaings wget -r 127.0.0.1 
+
+    h> proxychains nmap -Pn <bart ip> 
+    h> proxychains wget -r ftp://Bart
+    h> proxychains wget -r Bart
+    h> proxychaings telnet Bart  # used just to look around 
+
+    steve> ssh colby@colby ip -R 42197:Bart:23 -NT
+    Test : colby > telnet 127.0.0.1 42197
+
+    h> ssh -p 42100 colby@127.0.0.1 -L 42104:colby_ip:42194 # Takes us to telnet session on bart ip
+    Test: h> telnet 127.0.0.1 42104  # telnet from host to Bart
+
+Remote port forward from bart back to steve
+
+    Bart> ssh steve@steve_ip -R 42196:127.0.0.1:22 -NT
+    h> ssh -p 42102 steve@127.0.0.1 -L 42105:127.0.0.1:42196 -NT 
+SSH from host to Bart 
+
+    H> SSH -P 42105 Bart@127.0.0.1
+
+
+    
 Now, we can ssh from the local host into steve, from there, we can use remote port forwarding to connect to additional hosts down the line. 
 
   * 5 Hosts
   * host -> ip -> ip -> ip -> tgt ip
-  * host    toly  colby  steve  dj
+  * host    toly  colby  steve  bart
 
          
 
@@ -110,4 +134,7 @@ Now, we can ssh from the local host into steve, from there, we can use remote po
       
       ssh -R <remote bind port>:<tgt ip>:<tgt port> -p <alt port> <user>@<remote ip> -NT
 
-      
+
+
+  ssh -L 1111:localhost:22 cctc@10.50.1.150 -NT 
+  ssh -L 2222:100.1.1.2:22 cctc@localhost -p 1111
