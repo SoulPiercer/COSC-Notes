@@ -17,6 +17,9 @@ LinOps:
 ssh -X student@10.50.22.235
 password1
 
+Winops:
+
+xfreerdp /u:student /p:password /dynamic-resolution +clipboard /v:10.50.29.77
 
 
 Penetration Testing:
@@ -191,4 +194,11 @@ Run on the webserver to send cookies back to my page:
  * Webserver info is stored
 
 		/var/www/html
+
+
+# Reverse Engineering:
+
+run file command on the file.
+
+
 
