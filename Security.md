@@ -200,5 +200,7 @@ Run on the webserver to send cookies back to my page:
 
 run file command on the file.
 
-
+Patching: 
+	export program, then save as PE file and change name. 
+		
 
