@@ -588,12 +588,14 @@ DEMO: Event Logging
 	Get-Eventlog -List
 
 ## Important applications:
-Scheduled Tasks
+### Scheduled Tasks
 
   	task scheduler
    	triggers and actions
 
-Services
+### Services
+
+	Check for ones without description.
 
 Registry Run keys
 
