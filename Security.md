@@ -1,23 +1,28 @@
 # Day 1 
+## GTFO BINS
+https://gtfobins.github.io/
 
+## COSC FG
 https://vta.cybbh.space/horizon/project/
 
-
+## Security CTFD Server
 https://sec.cybbh.io/public/security/latest/index.html
 
 	CTFD Server: http://10.50.20.250:8000	
 	User: NIRI-505-M  
 	Pass: gVN5chrkxW0bym1 	
 
-Gray host: 10.50.34.77
+## Gray host: 10.50.34.77
+	
+ 	student
+	Pass: gVN5chrkxW0bym1
 
-
-LinOps:
+## LinOps:
 
 	ssh -X student@10.50.22.235
 	password1
 
-Winops:
+## Winops:
 
 	xfreerdp /u:student /p:password /dynamic-resolution +clipboard /v:10.50.29.77
 	
@@ -631,6 +636,8 @@ modifies /etc/shadow file with suid privileges
 
 	find / -type f -perm /2 -o -type d -perm /2 2>/dev/null  # Search for any file or directory that is writable by the context "other"
 
+  	find / -type f -perm /4000 -ls 2>/dev/null 	# finds commands with the suid bit set. 
+
   	find / -type f -writable -o -type d -writable 2>/dev/null # Search for any file or directory that is writable by the current user
  	/tmp 
 
@@ -737,6 +744,7 @@ Rsyslog
 
     Find out:
     	grep "IncludeConfig" /etc/rsyslog.conf
+
 
 
 
