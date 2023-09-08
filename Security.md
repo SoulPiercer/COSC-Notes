@@ -766,6 +766,7 @@ user_password=EaglesIsARE78
 user2@PublicFacingWebsite:/$ ip n
 10.10.28.30 dev ens3 lladdr fa:16:3e:f9:39:67 REACHABLE
 
+ip a
 192.168.28.181 WebApp
 
 
