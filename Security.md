@@ -748,4 +748,13 @@ Rsyslog
 
 
 
+# DryRun
+
+* 5 boxes ---- ignore anything ending in .190
+* priv escalation on two boxes
+
+* First Targe Ip address: 10.50.35.1
+
+
+
 
