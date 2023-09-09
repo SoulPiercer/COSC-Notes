@@ -21,6 +21,15 @@ https://sec.cybbh.io/public/security/latest/index.html
  # Host Discovery 
 
      nmap -v -sT -Pn -T4 -sV 192.168.28.111,120
+
+## Places to check
+
+	ip n
+ 	ip a
+  	cat /etc/hosts
+   	ps -elf
+    	ss -ntlp
+     	
 ## HTTP Enumeration Script:
 
     nmap -v -sT -Pn -T4 --script=http-enum.nse 192.168.28.111 -p 80
