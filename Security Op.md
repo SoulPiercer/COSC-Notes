@@ -124,3 +124,21 @@ Finding running service ports if nc doesn't give adequate results (Windows):
 	/etc/crontab
 
 
+## Reverse Engineering:
+
+	./reverse_engineer_me $(echo "AAAAAAAAAAAAAAAAAAAAAAA")
+ 	gdb-peda$ run <<<$(echo "./mybuff.py")
+
+ 	pdisass main 
+  	EIP register
+
+   	unset env COLUMNS
+    	unset env LINES
+     	show env
+      	run
+
+       crash it
+       info proc map
+       find /b <after th heap>, <end of the stack> oxff, oxe4
+       ^convert to little endian^
+       
