@@ -100,6 +100,11 @@ Escalating Privs on Linux:
 
 	find binaries with guid bit set. 
 
+ 	find / -type f -perm /2 -o -type d -perm /2 2>/dev/null  # Search for any file or directory that is writable by the context "other"
+
+	find / -type f -perm /4000 -ls 2>/dev/null 	# finds commands with the suid bit set. 
+
+	find / -type f -writable -o -type d -writable 2>/dev/null # Search for any file or directory that is writable by the current user /tmp 
 
 	
 
