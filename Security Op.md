@@ -141,4 +141,10 @@ Finding running service ports if nc doesn't give adequate results (Windows):
        info proc map
        find /b <after th heap>, <end of the stack> oxff, oxe4
        ^convert to little endian^
-       
+
+## Command Injection:
+
+If Command injection is possible, then try to drop our public key into the users .ssh directory.
+Generate new keys:
+
+  	ssh-keygen -t rsa -b 4096
