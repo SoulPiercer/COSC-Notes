@@ -25,10 +25,12 @@ https://sec.cybbh.io/public/security/latest/index.html
 ## Places to check
 
 	ip n
- 	ip a
+ 	ip a / arp -a
   	cat /etc/hosts
    	ps -elf
     	ss -ntlp
+     	cron
+      	
      	
 ## HTTP Enumeration Script:
 
