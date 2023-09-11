@@ -106,8 +106,12 @@ Escalating Privs on Linux:
 
 	find / -type f -writable -o -type d -writable 2>/dev/null # Search for any file or directory that is writable by the current user /tmp 
 
-	
 
+Finding running service ports if nc doesn't give adequate results (Windows):
+	
+ 	Grab pid # from: 
+  		tasklist /sv | findstr <service name>
+	run netstat -ano | findstr "pid#"
 
 
 
