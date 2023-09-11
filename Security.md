@@ -174,6 +174,7 @@ Run on the webserver to send cookies back to my page:
 		; mkdir /users/home/directory/.ssh   #make .ssh in users home folder if it does not exis
 
 * Make authorized key file in .ssh
+* If file already exists, use >> if there isn't one, > will make a new file. 
 
 		 ; echo "your_public_key_here" > /users/home/directory/.ssh/authorized_keys
 
