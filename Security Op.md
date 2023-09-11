@@ -67,3 +67,31 @@ https://sec.cybbh.io/public/security/latest/index.html
 	print s.recv(1024)   #print response
 	s.close()         #close the connection
 
+
+
+# Review 
+
+nmap scan:
+
+	nmap -v -sT -Pn -T4 -sV <ip>
+
+http-enum scan
+
+     	nmap -v -sT -Pn -T4 --script=http-enum.nse <ip> -p 80
+
+      Check /img/ for network map
+
+directory traversal:
+
+	Usually found in File to Read search bar. 
+
+	../../../../../etc/passwd
+ 	../../../../../etc/hosts
+  
+Fuzzing the pages:
+
+	
+
+
+
+
