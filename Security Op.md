@@ -30,6 +30,8 @@ https://sec.cybbh.io/public/security/latest/index.html
    	ps -elf
     	ss -ntlp
      	cron
+      /var/tmp
+      /tmp
       	
      	
 ## HTTP Enumeration Script:
@@ -117,5 +119,8 @@ Finding running service ports if nc doesn't give adequate results (Windows):
   		tasklist /sv | findstr <service name>
 	run netstat -ano | findstr "pid#"
 
+## Cronttab 
+	/var/spool/cron/crontabs
+	/etc/crontab
 
 
