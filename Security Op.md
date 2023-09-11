@@ -90,6 +90,10 @@ directory traversal:
   
 Fuzzing the pages:
 
+	pick.php?product=7 OR 1=1 ;
+ 	products7 UNION SELECT 1,2,3
+  	
+
 	
 
 
