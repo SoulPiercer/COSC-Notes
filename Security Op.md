@@ -126,11 +126,29 @@ Finding running service ports if nc doesn't give adequate results (Windows):
 
 ## Reverse Engineering:
 
+ 	file on the file
+
+   	run the file 
+    	gdb ./file
+     	info functions
+
+      	
 	./reverse_engineer_me $(echo "AAAAAAAAAAAAAAAAAAAAAAA")
  	gdb-peda$ run <<<$(echo "./mybuff.py")
 
  	pdisass main 
   	EIP register
+## On the other box:
+
+env - gdb ./function 
+dissassemble main
+dissassemble (other func)
+show env 
+unset env
+run program and crash it
+info proc map
+find /b <after the heap>, <end of the stack> oxff, oxe4
+   ^convert to little endian^
 
    	unset env COLUMNS
     	unset env LINES
@@ -139,8 +157,8 @@ Finding running service ports if nc doesn't give adequate results (Windows):
 
        crash it
        info proc map
-       find /b <after th heap>, <end of the stack> oxff, oxe4
-       ^convert to little endian^
+       
+    
 
 ## Command Injection:
 
