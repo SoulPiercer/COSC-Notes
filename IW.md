@@ -42,3 +42,43 @@ The informational Aspects reflect the way that individuals , information systems
 Public Affairs 
 Civil Military Operations: establish, maintain , influence, and key word EXPLOIT relations between military, indigenous populations and institutions. 
 
+
+# Electromagnetic Warfare.
+
+Electromagnetic Operational Environment (EMOE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
