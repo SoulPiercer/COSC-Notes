@@ -43,21 +43,22 @@ Public Affairs
 Civil Military Operations: establish, maintain , influence, and key word EXPLOIT relations between military, indigenous populations and institutions. 
 
 
-# Electromagnetic Warfare.
+# Review
 
-Electromagnetic Operational Environment (EMOE)
+    Electromagnetic Operational Environment (EMOE)
+    
+    Radar Imagery is a Sub-Category of GEO-Int
+    
+    GROUND segment, LINK segment, Space segment === 3 Domain Elements of space
+    Physical, Network, cognitive === 3 domains of space
+    Layers of Cyberspace === Cyberspace
+    
+    COMINT === Collecting/processing foreign Communications
+    
+    DIA === 
 
-
-
-
-
-
-
-
-
-
-
-
+    
+    
 
 
 
